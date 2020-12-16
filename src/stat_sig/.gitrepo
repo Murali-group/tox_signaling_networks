@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:jlaw9/gpdPerm.git
+	branch = master
+	commit = 84169467daee9da1fd49a86a4a5444bef71f5c15
+	parent = c23af5fa2f04f178d4f43f824e631234fed10e24
+	method = merge
+	cmdver = 0.4.1
