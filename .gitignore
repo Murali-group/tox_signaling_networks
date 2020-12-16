@@ -1,0 +1,13 @@
+outputs/
+
+# vim 
+.*.sw* 
+
+# python
+*.pyc
+__pycache__
+
+# emacs 
+*~
+#*#
+
