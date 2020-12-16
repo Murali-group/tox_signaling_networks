@@ -1,0 +1,6 @@
+# Data originally downloaded from here: https://www.epa.gov/chemical-research/exploring-toxcast-data-downloadable-data
+
+# In order to parse the files with pandas, I had to convert them to unix file format. 
+# To do that, I opened the file in vim, then ran this command:
+:set fileencoding=utf-8
+
