@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:jlaw9/EdgeLinker.git
+	branch = master
+	commit = 86d3c6914c053216cba757d64d5fe0ea37eebefe
+	parent = 5de6e29d08612d6c7f35e9656dd0e1349ae22317
+	method = merge
+	cmdver = 0.4.1
