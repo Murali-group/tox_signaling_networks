@@ -726,18 +726,18 @@ def parseArguments(args):
             help='Force the algorithm to run even if the output is there already. Also works for forcing random network generation')   
     parser.add_option_group(group)
 
-    group = OptionGroup(parser,'GraphSpace')
-    group.add_option('-g','--graphspace',action='store_true', default=False,
-            help='post response networks to graphspace')   
-    group.add_option('','--k-to-post', type='int', default=200,
-            help='Value of k to test for significance. Multiple k values can be given.')
-    group.add_option('','--forcepost',action='store_true', default=False,
-            help='Force the network to be posted to graphspace even if json file already exists')   
-    group.add_option('-p','--postfix',action='store',
-            help='add the postfix to the end of the chemical name to compare different options')   
-    group.add_option('', '--revigo-colors', action='store_true', default=False,
-            help="add colors to the nodes according to which REVIGO function/goterm it belongs to. GO terms must be manually selected based on REVIGO results")
-    parser.add_option_group(group)
+    # group = OptionGroup(parser,'GraphSpace')
+    # group.add_option('-g','--graphspace',action='store_true', default=False,
+    #         help='post response networks to graphspace')   
+    # group.add_option('','--k-to-post', type='int', default=200,
+    #         help='Value of k to test for significance. Multiple k values can be given.')
+    # group.add_option('','--forcepost',action='store_true', default=False,
+    #         help='Force the network to be posted to graphspace even if json file already exists')   
+    # group.add_option('-p','--postfix',action='store',
+    #         help='add the postfix to the end of the chemical name to compare different options')   
+    # group.add_option('', '--revigo-colors', action='store_true', default=False,
+    #         help="add colors to the nodes according to which REVIGO function/goterm it belongs to. GO terms must be manually selected based on REVIGO results")
+    # parser.add_option_group(group)
 
     group = OptionGroup(parser, 'Statistics')
     group.add_option('','--stat-sig', action='store_true',
