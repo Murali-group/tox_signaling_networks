@@ -4,11 +4,13 @@ Code and datasets for building and evaluating toxicant signaling networks.
 ## Setup
 ```
 conda create -y -n tox_sig_nets python=3.7
+conda activate tox_sig_nets
 conda install --file requirements.txt
 ```
 To run EdgeLinker, you must have a suitable java installation (> 1.8)
 
 ## Regenerate Results
+The commands below outline the steps necessary to regenerate the results and figures from the paper.
 
 ### Create Toxicant Signaling Networks with EdgeLinker
 ```
