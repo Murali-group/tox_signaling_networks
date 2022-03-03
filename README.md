@@ -17,9 +17,9 @@ The commands below outline the steps necessary to regenerate the results and fig
 python masterscript.py --version 2018_01-toxcast-d2d-p1_5-u1_25 --response-networks
 ```
 ### Statistical Significance - Randomized interactome
-     - To generate the "random networks", the command below creates 1,000 randomized interactomes using edge swapping
-     - Then run EdgeLinker, using the original set of sources and targets for each toxicant, on each of those randomized interactomes
-     - The `--super-computer` option creates many PBS scripts and submits them to a cluster at VT (baobab)
+- To generate the "random networks", the command below creates 1,000 randomized interactomes using edge swapping
+- Then run EdgeLinker, using the original set of sources and targets for each toxicant, on each of those randomized interactomes
+- The `--super-computer` option creates many PBS scripts and submits them to a cluster at VT (baobab)
 ```
 version="2018_01-toxcast-d2d-p1_5-u1_25"
 python master-script.py \
@@ -34,11 +34,11 @@ python master-script.py \
     -k 50 -k 100 -k 200 \
     --forcealg
 ```
-     - This is the command to compute the p-values after the random networks have been generated
+- This is the command to compute the p-values after the random networks have been generated
 ```
 python master-script.py --version $version --stat-sig -k 50 -k 100 -k 200 --scope permute-dir-undir
 ```
-     - outputs will be here: `outputs/2018_01-toxcast-d2d-p3-u1_25/weighted/stats/stat-sig-permute-dir-undir/bfcorr_pval_qval.txt`
+- outputs will be here: `outputs/2018_01-toxcast-d2d-p3-u1_25/weighted/stats/stat-sig-permute-dir-undir/bfcorr_pval_qval.txt`
 ### CTD Overlap
 ```
 version="2018_01-toxcast-d2d-p1_5-u1_25"; python src/ctd_analysis/run_ctd_analysis.py \
@@ -50,7 +50,7 @@ version="2018_01-toxcast-d2d-p1_5-u1_25"; python src/ctd_analysis/run_ctd_analys
     --mapping-file inputs/2018_01-toxcast-net/2018_01_uniprot_mapping.tsv
 ```
 ### GO term enrichment
-     - all chemicals:
+- all chemicals:
 ```
 version="2018_01-toxcast-d2d-p1_5-u1_25"; 
 python src/goterm_analysis/run_david_analysis.py \
@@ -59,20 +59,20 @@ python src/goterm_analysis/run_david_analysis.py \
   --paths outputs/$version/weighted/edgelinker/ \
   --correction-type BF
 ```
-     - For significant chemicals only: add the option `--pval-cutoff 0.01`
+- For significant chemicals only: add the option `--pval-cutoff 0.01`
 ### Fig 2e - Overlap Graph
 #### TODO Post to GraphSpace
 ### Case Studies
 #### Settings used to run REVIGO
-     - We set `allowed semantic similarity` to 0.4, which corresponds to a "tiny" list size
-     - For the database of GO term sizes, we used the `homo sapiens` database
-     - All other settings set to defaults
+- We set `allowed semantic similarity` to 0.4, which corresponds to a "tiny" list size
+- For the database of GO term sizes, we used the `homo sapiens` database
+- All other settings set to defaults
 ##### choosing the terms after revigo
-      - We removed terms with a frequency > 5%
-      - Many terms still represented similar functions, so we manually chose a single term to represent clusters in the revigo output.
+- We removed terms with a frequency > 5%
+- Many terms still represented similar functions, so we manually chose a single term to represent clusters in the revigo output.
 #### Post to GraphSpace
 ##### Lovastatin
-      - The ID for lovastatin is `C75330755`
+- The ID for lovastatin is `C75330755`
 ```
 python src/graphspace/post_to_graphspace_wrapper.py  \
     --revigo-file outputs/2018_01-toxcast-d2d-p1_5-u1_25/weighted/stats/go-analysis/revigo/lovastatin/revigo-lovastatin-selected-terms.csv \
@@ -85,7 +85,7 @@ python src/graphspace/post_to_graphspace_wrapper.py  \
     --postfix=-revigo-ctd
 ```
 ##### BPA
-      - The ID for BPA is `C80057`
+- The ID for BPA is `C80057`
 ```
 python src/graphspace/post_to_graphspace_wrapper.py  \
     --revigo-file outputs/2018_01-toxcast-d2d-p1_5-u1_25/weighted/stats/go-analysis/revigo/bpa/bpa-revigo-selected-terms.csv \
@@ -98,7 +98,7 @@ python src/graphspace/post_to_graphspace_wrapper.py  \
     --postfix=-revigo-ctd
 ```
 ### Post Networks to GraphSpace
-    - First, make an account on graphspace as well as a group (optional)
+- First, make an account on graphspace as well as a group (optional)
 ```
 python src/graphspace/post_to_graphspace_wrapper.py \
     --ctd-support-file=inputs/ctd/CTD_chem_gene_ixns_human_phospho.tsv \
