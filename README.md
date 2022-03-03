@@ -60,8 +60,6 @@ python src/goterm_analysis/run_david_analysis.py \
   --correction-type BF
 ```
 - For significant chemicals only: add the option `--pval-cutoff 0.01`
-### Fig 2e - Overlap Graph
-#### TODO Post to GraphSpace
 ### Case Studies
 #### Settings used to run REVIGO
 - We set `allowed semantic similarity` to 0.4, which corresponds to a "tiny" list size
@@ -99,13 +97,7 @@ python src/graphspace/post_to_graphspace_wrapper.py  \
 ```
 ### Post Networks to GraphSpace
 - First, make an account on graphspace as well as a group (optional)
+- The bash script below is an example of how to call `post_to_graphspace_wrapper.py` for each chemical
 ```
-python src/graphspace/post_to_graphspace_wrapper.py \
-    --ctd-support-file=inputs/ctd/CTD_chem_gene_ixns_human_phospho.tsv \
-    --version 2018_01-toxcast-d2d-p1_5-u1_25 \
-    -S C137304 \
-    --user <username> --pass <password> \
-    --parent-nodes --case-study \
-    --term-counts-file=outputs/2018_01-toxcast-d2d-p1_5-u1_25/weighted/stats/go-analysis/505chemicals-sig-terms-bonferroni-c0_01-counts.tsv \
-    --group=<group-name>
+bash src/graphspace/post-to-gs.sh
 ```
