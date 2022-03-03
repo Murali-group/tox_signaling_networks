@@ -1,1 +1,9 @@
-networkx pandas numpy scipy tqdm matplotlib seaborn
+networkx
+pandas
+numpy
+scipy
+tqdm
+matplotlib
+seaborn
+graphspace-python
+jupyter
