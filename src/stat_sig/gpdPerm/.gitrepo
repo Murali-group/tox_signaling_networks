@@ -6,7 +6,7 @@
 [subrepo]
 	remote = git@github.com:jlaw9/gpdPerm.git
 	branch = master
-	commit = 84169467daee9da1fd49a86a4a5444bef71f5c15
-	parent = c23af5fa2f04f178d4f43f824e631234fed10e24
+	commit = 765e363d47b60c20eee85b2e0e01a7266070220a
+	parent = 49cbbd9c7b6903b5d9513fe2b515ee296a68f148
 	method = merge
 	cmdver = 0.4.1
