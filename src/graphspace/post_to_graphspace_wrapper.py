@@ -337,20 +337,18 @@ def call_post_to_graphspace(version, chemicals, **kwargs):
         # get the chemical name. make sure it doesn't have any '%' or '[',']' as that will break posting
         chemName = chemIDtoName[chemical].replace('%','').replace('[','').replace(']','')
         rec_tfs_file = t_settings.REC_TFS_FILE % (INPUTSPREFIX, chemical)
-        cyclinker_output_file = "%s/cyclinker/%s-paths.txt"%(RESULTSPREFIX, chemical)
+        edgelinker_output_file = "%s/edgelinker/%s-paths.txt"%(RESULTSPREFIX, chemical)
         output_json = "%s/graphspace/%s-graph%s.json" % (RESULTSPREFIX, chemical, kwargs.get('name_postfix',''))
-        proteins, num_paths = t_utils.getProteins(paths=cyclinker_output_file, max_k=kwargs['k_to_post'], ties=True)
+        proteins, num_paths = t_utils.getProteins(paths=edgelinker_output_file, max_k=kwargs['k_to_post'], ties=True)
         if not kwargs['forcepost'] and os.path.isfile(output_json): 
             print("%s already exists. Use --forcepost to overwrite it" % (output_json))
         else:
-            # TEMP: The evidence file I used is different from the default:
-            ev_file = "/data/jeff-law/svnrepo/data/interactions/compiled/2018_01/with-d2d/2018_01pathlinker-nokegg.tsv"
             build_graph_and_post(
-                version, interactome, rec_tfs_file, RESULTSPREFIX, cyclinker_output_file,
+                version, interactome, rec_tfs_file, RESULTSPREFIX, edgelinker_output_file,
                 chemical, max_k=num_paths, graph_name="%s-%s-%s%s"%(chemName,chemical,version,kwargs.get('name_postfix','')),
                 #name_postfix='-'+version, tag=version, chemical_color_file=)
                 graph_attr_file=chemical_color_files.get(chemical) if chemical_color_files is not None else None,
-                ev_file=ev_file, out_pref="%s/graphspace/%s%s" % (RESULTSPREFIX, chemical,kwargs.get('name_postfix','')),
+                ev_file=kwargs['evidence_file'], out_pref="%s/graphspace/%s%s" % (RESULTSPREFIX, chemical,kwargs.get('name_postfix','')),
                 **kwargs)
 
 
@@ -361,7 +359,7 @@ def build_graph_and_post(
         graph_attr_file=None, ev_file=None,
         datadir="/home/jeffl/svnrepo/data", **kwargs):
     # get the "evidence version" which is used to get the CSBDB related files
-    ev_version = t_utils.get_ev_version(version)
+    #ev_version = t_utils.get_ev_version(version)
 
     PPI = interactome
     lines = utils.readColumns(PPI,1,2,3)
@@ -506,28 +504,7 @@ def constructGraph(
     :param outfile: output JSON file that will be written
     '''
     # NetworkX object
-    #G = nx.DiGraph(directed=True)
     G = GSGraph()
-    # edges_file = kwargs['ranked_edges'] if kwargs.get('ranked_edges') is not None else kwargs['paths']
-    # # get metadata
-    # desc = getGraphDescription(edges_file, kwargs['ppi'], pathway_colors=None, chemicalID=kwargs['chemicalID'])
-    # metadata = {'description':desc,'tags':[], 'title':''}
-    # if kwargs['tag']:
-    #     metadata['tags'] = [kwargs['tag']]
-    # if kwargs['chemicalID']:
-    #     metadata['title'] = CHEMICALS.chemDSStoName[kwargs['chemicalID']]
-
-    # # get the evidence from get_interaction_evidence.py
-    # evidence_file = kwargs.get('evidence_file') 
-    # if evidence_file is None:
-    #     evidence_file = getev.getEvidenceFile(kwargs['version'], kwargs['datadir'])
-    # # TODO make it an option to add evidence to family edges
-    # add_ev_to_family_edges = True 
-    # family_ppi_evidence = None 
-    # if add_ev_to_family_edges:
-    #     evidence, family_ppi_evidence, edge_types, edge_dir = getev.getEvidence(prededges.keys(), evidence_file=evidence_file, split_family_nodes=True, add_ev_to_family_edges=add_ev_to_family_edges)
-    # else:
-    #     evidence, edge_types, edge_dir = getev.getEvidence(prededges.keys(), evidence_file=evidence_file, add_ev_to_family_edges=add_ev_to_family_edges)
 
     prednodes = set([t for t,h in prededges]).union(set([h for t,h in prededges]))
 
@@ -554,16 +531,6 @@ def constructGraph(
             # if n is a taret, make it a yellow square
             node_type = 'target'
             parent = 'Targets'
-        # # also check if the individual nodes in the family node are counted as rec or TFs
-        # elif n in extra_rec or len([p for p in n.split(',') if p in extra_rec]) > 0:
-        #     # gray triangle
-        #     node_type = 'intermediate_rec'
-        #     parent = 'Intermediate Receptors'
-        # # also check if the individual nodes in the family node are counted as rec or TFs
-        # elif n in extra_tfs or len([p for p in n.split(',') if p in extra_tfs]) > 0:
-        #     # gray square
-        #     node_type = 'intermediate_tf'
-        #     parent = 'Intermediate TFs'
 
         if n not in graph_attr:
             graph_attr[n] = {}
@@ -813,39 +780,39 @@ def buildNodePopup(n, pathswithnode=None, pathway_colors=None, chemical=None):
     entrezurl = 'http://www.ncbi.nlm.nih.gov/gene/%s'
 
     # if this is a family node:
-    if len(n.split(',')) > 1:
-        uids = n.split(',')
-        gene_names = uniprot_to_gene[n].split(',')
-        htmlstring += '<b>Gene names</b>: %s <br>' % (','.join(sorted(gene_names)))
-        htmlstring += '<b>Uniprot IDs</b>: %s <br>' % (n)
-        htmlstring += "<b>Uniprot IDs and Protein Names</b>:<br> <ul>"
-        for gene in sorted(gene_names):
-            uid = uids[gene_names.index(gene)]
-            # make a bulleted list where each item in the list is:  gene name: uniprotid_link Full Protein Name
-            # TODO add a link to the gene name as well
-            e = db.map_id(uid, 'uniprotkb', 'GeneID')
-            if len(e) > 0:
-                e = e.pop() 
-                entrezlink = '<a style="color:blue" href="%s" target="EntrezGene">%s</a>' % (entrezurl%e, gene) 
-            else:
-                entrezlink = gene
-            protein_name = db.get_description(uid)
-            uniprot_link = '<a style="color:blue" href="%s" target="UniProtKB">%s</a>' % (uniproturl%uid, uid)
-            htmlstring += "<li>%s: %s %s </li>" % (entrezlink, uniprot_link, protein_name)
-        htmlstring+='</ul>'
-    else:
-        #List Uniprot accession number
-        uid = n
-        htmlstring += '<b>Uniprot ID</b>: <a style="color:blue" href="%s" target="UniProtKB">%s</a><br>' % (uniproturl%uid, uid)
-        # htmlstring += '<li><i>Recommended name</i>: %s</li>' % (db.get_description(uid))
-        # get the alternate names from the AltName-Full namespace
-        # alt_names = db.map_id(uid, 'uniprotkb', 'AltName-Full')
-        # if len(alt_names) > 0:
-        #     htmlstring += '<li><i>Alternate name(s)</i>: <ul><li>%s</li></ul></li>' %('</li><li>'.join(sorted(alt_names)))
+    # if len(n.split(',')) > 1:
+    #     uids = n.split(',')
+    #     gene_names = uniprot_to_gene[n].split(',')
+    #     htmlstring += '<b>Gene names</b>: %s <br>' % (','.join(sorted(gene_names)))
+    #     htmlstring += '<b>Uniprot IDs</b>: %s <br>' % (n)
+    #     htmlstring += "<b>Uniprot IDs and Protein Names</b>:<br> <ul>"
+    #     for gene in sorted(gene_names):
+    #         uid = uids[gene_names.index(gene)]
+    #         # make a bulleted list where each item in the list is:  gene name: uniprotid_link Full Protein Name
+    #         # TODO add a link to the gene name as well
+    #         e = db.map_id(uid, 'uniprotkb', 'GeneID')
+    #         if len(e) > 0:
+    #             e = e.pop() 
+    #             entrezlink = '<a style="color:blue" href="%s" target="EntrezGene">%s</a>' % (entrezurl%e, gene) 
+    #         else:
+    #             entrezlink = gene
+    #         protein_name = db.get_description(uid)
+    #         uniprot_link = '<a style="color:blue" href="%s" target="UniProtKB">%s</a>' % (uniproturl%uid, uid)
+    #         htmlstring += "<li>%s: %s %s </li>" % (entrezlink, uniprot_link, protein_name)
+    #     htmlstring+='</ul>'
+    # else:
+    #List Uniprot accession number
+    uid = n
+    htmlstring += '<b>Uniprot ID</b>: <a style="color:blue" href="%s" target="UniProtKB">%s</a><br>' % (uniproturl%uid, uid)
+    # htmlstring += '<li><i>Recommended name</i>: %s</li>' % (db.get_description(uid))
+    # get the alternate names from the AltName-Full namespace
+    # alt_names = db.map_id(uid, 'uniprotkb', 'AltName-Full')
+    # if len(alt_names) > 0:
+    #     htmlstring += '<li><i>Alternate name(s)</i>: <ul><li>%s</li></ul></li>' %('</li><li>'.join(sorted(alt_names)))
 
-        # #List EntrezGene IDs:
-        # for e in db.map_id(uid, 'uniprotkb', 'GeneID'):
-        #     htmlstring += '<br><b>Entrez ID:</b> <a style="color:blue" href="%s" target="EntrezGene">%s</a>' % (entrezurl%e, e)
+    # #List EntrezGene IDs:
+    # for e in db.map_id(uid, 'uniprotkb', 'GeneID'):
+    #     htmlstring += '<br><b>Entrez ID:</b> <a style="color:blue" href="%s" target="EntrezGene">%s</a>' % (entrezurl%e, e)
 #
 #    #List IHOP link
 #    ihopurl = 'http://www.ihop-net.org/UniPub/iHOP/?search=%s&field=UNIPROT__AC&ncbi_tax_id=9606' % (uid)
@@ -865,19 +832,19 @@ def buildNodePopup(n, pathswithnode=None, pathway_colors=None, chemical=None):
                 htmlstring += '<li>%s</li>' % (pathway_link)
         htmlstring+='</ul>'
 
-    # TODO add extra node annotations
-    # Chemical specific info
-    if chemical is not None and chemical in CHEMICALS.chemicals and \
-            n in CHEMICALS.chemicals[chemical]['accs']:
-        htmlstring += "<hr /><b>Assays</b>:<ul>"
-        for assay in CHEMICALS.chemicals[chemical]['accs'][n]:
-            htmlstring += '<li>%s<ul>'%assay
-            htmlstring += '<li>hit: <i>%d</i></li>'%CHEMICALS.chemicals[chemical]['accs'][n][assay]['hit']
-            htmlstring += '<li>zscore: <i>%s</i></li>'%CHEMICALS.chemicals[chemical]['accs'][n][assay]['zscore']
-            htmlstring += '<li>intended_target_type_sub: <i>%s</i></li>'%CHEMICALS.chemicals[chemical]['accs'][n][assay]['intended_target_type_sub']
-            htmlstring += '<li>intended_target_family: <i>%s</i></li>'%CHEMICALS.chemicals[chemical]['accs'][n][assay]['intended_target_family']
-            htmlstring += '</ul></li>'
-        htmlstring+='</ul>'
+    #  # TODO add extra node annotations
+    #  # Chemical specific info
+    # if chemical is not None and chemical in CHEMICALS.chemicals and \
+    #         n in CHEMICALS.chemicals[chemical]['accs']:
+    #     htmlstring += "<hr /><b>Assays</b>:<ul>"
+    #     for assay in CHEMICALS.chemicals[chemical]['accs'][n]:
+    #         htmlstring += '<li>%s<ul>'%assay
+    #         htmlstring += '<li>hit: <i>%d</i></li>'%CHEMICALS.chemicals[chemical]['accs'][n][assay]['hit']
+    #         htmlstring += '<li>zscore: <i>%s</i></li>'%CHEMICALS.chemicals[chemical]['accs'][n][assay]['zscore']
+    #         htmlstring += '<li>intended_target_type_sub: <i>%s</i></li>'%CHEMICALS.chemicals[chemical]['accs'][n][assay]['intended_target_type_sub']
+    #         htmlstring += '<li>intended_target_family: <i>%s</i></li>'%CHEMICALS.chemicals[chemical]['accs'][n][assay]['intended_target_family']
+    #         htmlstring += '</ul></li>'
+    #     htmlstring+='</ul>'
     return htmlstring
 
 
@@ -908,51 +875,6 @@ def buildEdgePopup(t, h, evidence, k=None, family_ppi_evidence=None):
     return annotation
 
 
-# def post_to_graphspace(
-#         version, interactome, rec_tfs_file, RESULTSPREFIX,
-#         pathlinker_output_file, chemical, max_k=200, graphID='test',
-#         postfix=None, tag=None, chemical_color_file=None):
-#     # TODO change the call to post to graphspace so that the chemical map doesn't have to be read each time (slowing down posting)
-#     # Could I update it so that the evidence doesn't have to be read each time as well?
-#     # I would need to restructure post_to_graphspace_csbdb.py to be a class.
-#     # new family network posting
-#     command = "python src/graphspace/post_to_new_graphspace_evidence.py " + \
-#               "--ppi %s " % (interactome) + \
-#               "--sourcetarget %s " % (rec_tfs_file) + \
-#               "--paths %s " % (pathlinker_output_file) + \
-#               "--k-limit %d " % (max_k) + \
-#               "--out-pref %s/graphspace/%s " % (RESULTSPREFIX, chemical) + \
-#               "--username jeffl@vt.edu " + \
-#               "--group ToxCast2 " + \
-#               "--graph-name %s" % (graphID.replace(' ','_'))  # this should always be last because -casestudy will be appended to it if casestudy is true
-#               #"--make-public " + \
-#               # leave out the chemicalID for now since I need to update the post-to-graphspace script
-#               #"--chemicalID %s " % (chemical) + \
-#     # append the postfix to the graph name
-#     if postfix:
-#         command += postfix
-#     # TODO add an option for case study graphs
-#     casestudy = True
-#     if casestudy:
-#         # append '-casestudy' to the end of the graph name for now
-#         # update: I'm using casestudy for the normal graph name, so leave it off for now
-#         #command += '-casestudy'
-#         command += " --casestudy "
-#     else:
-#         # apply the --human-rec-tfs option if this isn't a casestudy
-#         command += " --human-rec-tfs $PWD/inputs/pathlinker-data/human-rec-tfs.txt "
-#     ev_version = t_utils.get_ev_version(version)
-#     command += " --version %s " % (ev_version)
-#     # TEMP: The evidence file I used is different from the default:
-#     command += "--evidence-file /data/jeff-law/svnrepo/data/interactions/compiled/2018_01/with-d2d/2018_01pathlinker-nokegg.tsv "
-#     if tag:
-#         command += " --tag %s " % (tag)
-#     if chemical_color_file is not None:
-#         command += " --graph-attr %s " % (chemical_color_file)
-#         command += " --include-parent-nodes "
-#     t_utils.runCommand(command, error_message="ERROR: Failed to post %s to graphspace\n"%rec_tfs_file)
-
-
 def setup_parser():
     """
     """
@@ -966,6 +888,8 @@ def setup_parser():
             help="Version of the PPI to run. Options are: %s." % (', '.join(t_settings.ALLOWEDVERSIONS)))
     group.add_argument('--mapping-file', default="inputs/2018_01-toxcast-net/2018_01_uniprot_mapping.tsv",
             help='File to map to a different namespace. Network/edge IDs (uniprot ids) should be in the first column with the other namespace (gene name) in the second')
+    group.add_argument('--evidence-file', default="inputs/2018_01-toxcast-net/2018_01interactome-evidence.tsv",
+            help='File containing the evidence for each edge in the interactome.')
     group.add_argument('--revigo-file', 
             help="File containing the outputs of REVIGO for coloring the nodes in the graph")
     group.add_argument('--term-counts-file', 
@@ -1034,201 +958,4 @@ if __name__ == '__main__':
     kwargs = parse_args(parser)
     kwargs['chemicals'] = kwargs['single_run']
     main(**kwargs)
-
-
-# def call_post_to_graphspace(chemicals, interactome, opts):
-#     t_utils.checkDir("%s/graphspace" % (RESULTSPREFIX))
-#     # write the color files of each chemical and return a dictionary of the chemical and its color file
-#     # instead of writing all files here, write them one at a time so they can be posted in parallel with running MGSA
-# #    chemical_color_files = {}
-# #    if opts.mgsa_colors:
-# #        chemical_color_files = mgsa_post_to_graphspace(chemicals, sig_cutoff=0.5, forced=opts.forcepost)
-# #    elif opts.revigo_colors:
-# #        chemical_color_files = revigo_post_to_graphspace(chemicals, forced=opts.forcepost)
-#     # post everything to graphspace!
-#     for chemical in tqdm(chemicals):
-#         # get the chemical name. make sure it doesn't have any '%' or '[',']' as that will break posting
-#         chemName = chemIDtoName[chemical].replace('%','').replace('[','').replace(']','')
-#         rec_tfs_file = REC_TFS_FILE % (INPUTSPREFIX, chemical)
-#         cyclinker_output_file = "%s/cyclinker/%s-paths.txt"%(RESULTSPREFIX, chemical)
-#         output_json = "%s/graphspace/%s-graph.json" % (RESULTSPREFIX, chemical)
-#         proteins, num_paths = t_utils.getProteins(paths=cyclinker_output_file, max_k=opts.k_to_post, ties=True)
-#         if not opts.forcepost and os.path.isfile(output_json): 
-#             print("%s already exists. Use --forcepost to overwrite it" % (output_json))
-#         else:
-#             # temporary fix to not re-post all chemical's networks
-#             post_to_graphspace(interactome, rec_tfs_file, cyclinker_output_file, chemical, max_k=num_paths, graphID="%s_%s"%(chemName,chemical),
-#                                postfix='-'+VERSION, tag=VERSION, chemical_color_file=opts.mgsa_colors)
-#                                #postfix='-'+VERSION, tag=VERSION, chemical_color_file=chemical_color_files.get(chemical))
-
-
-# def post_to_graphspace(interactome, rec_tfs_file, pathlinker_output_file, chemical, max_k=200, graphID='test', postfix=None, tag=None, chemical_color_file=False):
-#     # TODO change the call to post to graphspace so that the chemical map doesn't have to be read each time (slowing down posting)
-#     # Could I update it so that the evidence doesn't have to be read each time as well?
-#     # I would need to restructure post_to_graphspace_csbdb.py to be a class.
-#     # new family network posting
-#     command = "python /home/jeffl/src/python/graphspace/trunk/graphspace-human/post_to_new_graphspace_evidence.py " + \
-#               "--ppi %s " % (interactome) + \
-#               "--sourcetarget %s " % (rec_tfs_file) + \
-#               "--paths %s " % (pathlinker_output_file) + \
-#               "--k-limit %d " % (max_k) + \
-#               "--out-pref %s/graphspace/%s " % (RESULTSPREFIX, chemical) + \
-#               "--username jeffl@vt.edu " + \
-#               "--group ToxCast2 " + \
-#               "--graph-name %s" % (graphID.replace(' ','_'))  # this should always be last because -casestudy will be appended to it if casestudy is true
-#               #"--make-public " + \
-#               # leave out the chemicalID for now since I need to update the post-to-graphspace script
-#               #"--chemicalID %s " % (chemical) + \
-#     # append the postfix to the graph name
-#     if postfix:
-#         command += postfix
-#     # TODO add an option for case study graphs
-#     casestudy = True
-#     if casestudy:
-#         # append '-casestudy' to the end of the graph name for now
-#         # update: I'm using casestudy for the normal graph name, so leave it off for now
-#         #command += '-casestudy'
-#         command += " --casestudy "
-#     else:
-#         # apply the --human-rec-tfs option if this isn't a casestudy
-#         command += " --human-rec-tfs $PWD/inputs/pathlinker-data/human-rec-tfs.txt "
-#     ev_version = t_utils.get_ev_version(VERSION)
-#     command += " --version %s " % (ev_version)
-#     # TEMP: The evidence file I used is different from the default:
-#     command += "--evidence-file /data/jeff-law/svnrepo/data/interactions/compiled/2018_01/with-d2d/2018_01pathlinker-nokegg.tsv "
-#     if tag:
-#         command += " --tag %s " % (tag)
-#     if chemical_color_file is True:
-#         chemical_color_files = mgsa_post_to_graphspace([chemical], sig_cutoff=0.5)
-#         chemical_color_file = chemical_color_files[chemical] 
-#         command += " --graph-attr %s " % (chemical_color_file)
-#         command += "--include-parent-nodes "
-#     t_utils.runCommand(command, error_message="ERROR: Failed to post %s to graphspace\n"%rec_tfs_file)
-
-
-# def revigo_post_to_graphspace(chemicals, forced=False):
-#     revigo_out_dir = "%s/stats/revigo" % (RESULTSPREFIX)
-
-#     # define a set of colors to pull from
-#     # TODO what if there are more than 12 pathways?
-#     colors = t_settings.COLORS
-#     out_dir = "%S/graphspace/colors" % (RESULTSPREFIX)
-#     t_utils.checkDir(out_dir)
-#     print("Writing REVIGO colors to %s for %d chemicals. (limit of %d colors)" % (out_dir, len(chemicals), len(colors)))
-#     chemical_color_files = {}
-#     for chemical in tqdm(sorted(chemicals)):
-#         out_file = "%s/%s-colors.txt" % (out_dir, chemical)
-#         chemical_color_files[chemical] = out_file
-#         # if the file already exists and this isn't forced, then skip this round
-#         if not forced and os.path.isfile(out_file):
-#             continue
-
-#         revigo_out_prefix = "%s/%s/%s" % (revigo_out_dir, chemical, chemical)
-#         david_results_file = "%s-david-results.tsv" % (revigo_out_prefix) 
-#         goterm_prots = {} 
-#         goterm_pvals = {} 
-#         goterm_to_id = {} 
-#         # goterm + name are in the 2nd column, BF corrected p-value in the 11th
-#         # annotated prots are in the 6th
-#         for goterm_and_name, prots, pval in utils.readColumns(david_results_file, 2, 6, 11):
-#             goterm_id, name = goterm_and_name.split("~")
-#             goterm_prots[name] = prots.replace(', ', '|')
-#             goterm_pvals[name] = pval
-#             goterm_to_id[name] = goterm_id
-#         revigo_selected_terms_file = "%s-selected-terms.txt" % (revigo_out_prefix)
-#         revigo_selected_terms = utils.readItemList(revigo_selected_terms_file) 
-#         #selected_terms = [goterm_to_id[name] for name in revigo_selected_terms]
-
-#         goterm_popups = {}
-#         link_template = "<a style=\"color:blue\" href=\"https://www.ebi.ac.uk/QuickGO/GTerm?id=%s\" target=\"DB\">%s</a>"
-#         for goterm in revigo_selected_terms:
-#             goterm_link = link_template % (goterm_to_id[goterm], goterm_to_id[goterm])
-#             popup = "<b>QuickGO</b>:%s" % (goterm_link)
-#             popup += "<br><b>p-value</b>: %0.2f" % (float(goterm_pvals[goterm]))
-#             goterm_popups[goterm] = popup
-
-#         write_colors_file(out_file, revigo_selected_terms, goterm_prots, goterm_popups)
-
-#     return chemical_color_files
-
-
-# def write_colors_file(out_file, functions, function_prots, function_popups=None, colors=None):
-#     if colors is None:
-#         colors = t_settings.COLORS
-#     if len(functions) > len(colors):
-#         print("\tWarning: # functions %d exceeds # colors %d. Limiting functions to the %d colors" % (len(functions), len(colors), len(colors)))
-#         # limit the pathways to the number of colors
-#         functions = functions[:len(colors)]
-
-#     function_colors = {}
-#     for i in range(len(functions)):
-#         function_colors[functions[i]] = colors[i] 
-
-#     # if no popup was provided, just show an empty popup
-#     if function_popups is None:
-#         function_popups = {function:"" for function in functions} 
-
-#     print("\tWriting graphspace colors file: %s" % (out_file))
-#     ## UPDATE 2017-07-13: create a compound or "parent" node for each goterm where the name of the parent node is the goterm name
-#     ## TODO The 4th column is the description/popup of the parent node
-#     # write the prots along with a color for posting to graphspace
-#     with open(out_file, 'w') as out:
-#         # first write the style of the individual nodes
-#         out.write("#style\tstyle_val\tprots\tdescription\n")
-#         out.write('\n'.join(['\t'.join(['color', function_colors[function], function_prots[function], '-']) for function in functions])+'\n')
-#         # then write the parent nodes
-#         out.write("#parent\tfunction\tprots\tpopup\n")
-#         for function in functions:
-#             out.write('\t'.join(['parent', function, function_prots[function], function_popups[function]])+'\n')
-#         # then write the style of the parent node
-#         out.write("#color\tcolor_val\tparent_node\tdescription\n")
-#         out.write('\n'.join(['\t'.join(['color', function_colors[function], function, '-']) for function in functions])+'\n')
-
-
-# def mgsa_post_to_graphspace(chemicals, sig_cutoff=0.5, forced=False):
-#     mgsa_out_dir = "%s/stats/MGSA-out" % (RESULTSPREFIX)
-#     #MsigDB  canonical pathways
-#     #mgsa_input_file = "src/mgsa/c2.cp.v3.1.entrez.gmt"
-#     mgsa_input_file = t_settings.MSIGDB_PATHWAYS
-#     ##MsigDB  biological processes 
-#     #mgsa_input_file = "src/mgsa/c5.bp.v5.0.entrez.gmt"
-
-#     # define a set of colors to pull from
-#     colors = t_settings.COLORS
-#     print("Writing MGSA colors for %d chemicals. (limit of %d colors)" % (len(chemicals), len(colors)))
-#     out_dir = "%s/graphspace/colors" % (RESULTSPREFIX)
-#     t_utils.checkDir(out_dir)
-#     # get the pathway_links from the mgsa input file
-#     mgsa_pathway_nodes, pathway_links = mgsa_wrappers.read_mgsa_input_file(mgsa_input_file=mgsa_input_file)
-
-#     chemical_color_files = {}
-#     for chemical in tqdm(sorted(chemicals)):
-#         out_file = "%s/%s-colors.txt" % (out_dir, chemical)
-#         chemical_color_files[chemical] = out_file
-#         # if the file already exists and this isn't forced, then skip this round
-#         if not forced and os.path.isfile(out_file):
-#             continue
-
-#         mgsa_out_prefix = "%s/%s/%s" % (mgsa_out_dir, chemical, chemical)
-#         mgsa_results_file = "%s-sig-results.txt" % (mgsa_out_prefix) 
-#         # get the significant pathways sorted by the estimate 
-#         sig_pathways = [(line[0], line[1][:4]) for line in utils.readColumns(mgsa_results_file, 1, 4)]
-
-#         # get the nodes of that pathway in the cyclinker results 
-#         pathway_prots_file = "%s-pathway-prots.txt" % (mgsa_out_prefix)
-#         pathway_prots = {pathway: prots for pathway, prots in utils.readColumns(pathway_prots_file, 1, 2)}
-
-#         pathway_popups = {}
-#         for pathway, estimate in sig_pathways:
-#             # TODO add these as a popup: estimate, pathway_links[pathway], 
-#             pathway_link = "<a style=\"color:blue\" href=\"%s\" target=\"MsigDB\">%s</a>" % (pathway_links[pathway], pathway.replace("_", " "))
-#             popup = "<b>Pathway</b>:%s" % (pathway_link)
-#             popup += "<br><b>Posterior Probability</b>: %0.2f" % (float(estimate))
-#             pathway_popups[pathway] = popup 
-
-#         sig_pathways = [pathway for pathway, estimate in sig_pathways]
-
-#         write_colors_file(out_file, sig_pathways, pathway_prots, pathway_popups)
-
-#     return chemical_color_files
 
