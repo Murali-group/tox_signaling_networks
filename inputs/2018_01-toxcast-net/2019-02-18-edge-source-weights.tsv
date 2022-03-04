@@ -1,0 +1,76 @@
+#num_edges	Pr(I=1|E)	Pr(I=0|E)	confidence_score	edge_source
+191	3.54234e-06	4.69791e-07	8.82907e-01	MI:0405 (competition binding)
+4110	6.59881e-05	1.09159e-05	8.58059e-01	NetPath
+282	4.55060e-06	7.73774e-07	8.54673e-01	MI:0434 (phosphatase assay)
+504	7.11221e-06	1.40937e-06	8.34611e-01	MI:0412 (electrophoretic mobility supershift assay)
+853	1.29990e-05	2.65294e-06	8.30504e-01	MI:0813 (proximity ligation assay)
+322	4.35984e-06	1.05012e-06	8.05891e-01	MI:0059 (gst pull down)
+208	2.77935e-06	7.18504e-07	7.94587e-01	MI:0045 (experimental interaction detection)
+381	4.95935e-06	1.32647e-06	7.88974e-01	MI:0053 (fluorescence polarization spectroscopy)
+136	1.77113e-06	5.80330e-07	7.53205e-01	MI:0413 (electrophoretic mobility shift assay)
+115	1.52590e-06	5.25061e-07	7.43992e-01	MI:0808 (comigration in sds page)
+470	5.23186e-06	1.82390e-06	7.41502e-01	MI:0090 (protein complementation assay)
+341	3.84209e-06	1.38174e-06	7.35493e-01	MI:0112 (ubiquitin reconstruction)
+233	2.88835e-06	1.10539e-06	7.23219e-01	MI:0423 (in-gel kinase assay)
+2016	2.03041e-05	8.06942e-06	7.15601e-01	SPIKE regulation=physical interaction
+139	1.66214e-06	6.63235e-07	7.14784e-01	SPIKE regulation=proteolytic processing
+203	1.55315e-06	6.35600e-07	7.09605e-01	MI:0411 (enzyme linked immunosorbent assay)
+114	1.11717e-06	4.69791e-07	7.03968e-01	MI:0028 (cosedimentation in solution)
+651	6.73069e-06	2.92929e-06	6.96760e-01	MI:0107 (surface plasmon resonance)
+143	1.36241e-06	6.07965e-07	6.91446e-01	MI:0049 (filter binding)
+708	6.29466e-06	3.17801e-06	6.64508e-01	MI:0055 (fluorescent resonance energy transfer)
+2133	1.96772e-05	1.02250e-05	6.58052e-01	MI:0428 (imaging technique)
+1352	1.13637e-05	6.24550e-06	6.45328e-01	MI:0019 (coimmunoprecipitation)
+5021	4.19539e-05	2.38218e-05	6.37833e-01	Phosphosite
+348	2.88835e-06	1.68572e-06	6.31461e-01	MI:0065 (isothermal titration calorimetry)
+303	2.58861e-06	1.51991e-06	6.30058e-01	MI:0077 (nuclear magnetic resonance)
+2933	2.38208e-05	1.44808e-05	6.21927e-01	SPIKE regulation=phosphorylation
+1235	9.83750e-06	6.21786e-06	6.12724e-01	MI:0030 (cross-linking study)
+162	1.38965e-06	8.84313e-07	6.11114e-01	MI:0892 (solid phase assay)
+329	2.12537e-06	1.35411e-06	6.10831e-01	MI:0435 (protease assay)
+331	2.15262e-06	1.38174e-06	6.09055e-01	SPIKE regulation=ubiquitination
+248	1.58039e-06	1.05012e-06	6.00792e-01	MI:0997 (ubiquitinase assay)
+1197	9.45595e-06	6.32840e-06	5.99071e-01	MI:0114 (x-ray crystallography)
+225	1.33516e-06	1.02249e-06	5.66310e-01	MI:0097 (reverse ras recruitment system)
+613	3.84209e-06	3.12274e-06	5.51642e-01	MI:0071 (molecular sieving)
+1212	7.43924e-06	6.16259e-06	5.46929e-01	MI:0081 (peptide array)
+1183	7.00320e-06	5.96915e-06	5.39856e-01	MI:0402 (chromatin immunoprecipitation assay)
+107	5.17709e-07	4.42156e-07	5.39356e-01	MI:0809 (bimolecular fluorescence complementation)
+1272	7.57550e-06	6.90874e-06	5.23017e-01	MI:0089 (protein array)
+6639	3.86539e-05	3.58161e-05	5.19054e-01	MI:0415 (enzymatic study)
+1209	7.05771e-06	6.68766e-06	5.13461e-01	MI:0424 (protein kinase assay)
+25615	1.37130e-04	1.37863e-04	4.98667e-01	MI:0096 (pull down)
+533	2.80660e-06	2.95693e-06	4.86959e-01	MI:0663 (confocal microscopy)
+1195	6.07665e-06	6.68766e-06	4.76066e-01	MI:0729 (luminescence based mammalian interactome mapping)
+549	2.64310e-06	2.92929e-06	4.74321e-01	MI:0029 (cosedimentation through density gradient)
+755	3.56959e-06	3.97942e-06	4.72855e-01	MI:0047 (far western blotting)
+341	1.88013e-06	2.18315e-06	4.62712e-01	SPIKE regulation=dephosphorylation
+142	7.08445e-07	8.56678e-07	4.52645e-01	SPIKE regulation=sumoylation
+160	8.99183e-07	1.10539e-06	4.48565e-01	SPIKE regulation=acetylation
+137	6.26701e-07	8.01409e-07	4.38833e-01	SPIKE regulation=mrna stability
+34867	1.51399e-04	1.96913e-04	4.34665e-01	SPIKE interaction
+184	9.80928e-07	1.32647e-06	4.25123e-01	MI:0084 (phage display)
+15851	6.25772e-05	9.23371e-05	4.03947e-01	MI:0006 (anti bait coimmunoprecipitation)
+855	3.13359e-06	5.08482e-06	3.81289e-01	MI:0416 (fluorescence microscopy)
+37580	1.28303e-04	2.19611e-04	3.68777e-01	MI:0007 (anti tag coimmunoprecipitation)
+10158	3.35000e-05	5.81749e-05	3.65421e-01	MI:0676 (tandem affinity purification)
+144	5.99453e-07	1.05012e-06	3.63399e-01	MI:0231 (mammalian protein protein interaction trap)
+944	2.83385e-06	5.63753e-06	3.34521e-01	MI:0034 (display technology)
+128755	3.67194e-04	7.71915e-04	3.22352e-01	MI:0004 (affinity chromatography technology)
+6644	1.81779e-05	3.90220e-05	3.17796e-01	SPIKE complex
+101	2.72478e-07	6.35600e-07	3.00060e-01	MI:0226 (ion exchange chromatography)
+35613	7.34656e-05	2.15354e-04	2.54365e-01	MI:0401 (biochemical)
+44435	9.08543e-05	2.76874e-04	2.47069e-01	MI:0018 (two hybrid)
+114	2.45230e-07	7.73774e-07	2.40656e-01	MI:0225 (chromatin immunoprecipitation array)
+371	6.53949e-07	2.12788e-06	2.35079e-01	MI:1113 (two hybrid bait and prey pooling approach)
+748	1.08992e-06	4.64266e-06	1.90127e-01	MI:0399 (two hybrid fragment pooling approach)
+383	6.53949e-07	2.95693e-06	1.81105e-01	MI:2215 (barcode fusion genetics two hybrid)
+6201	7.87528e-06	3.94642e-05	1.66358e-01	MI:0398 (two hybrid pooling approach)
+7621	9.10165e-06	5.01599e-05	1.53585e-01	MI:1313 (bioid)
+158	1.36239e-07	9.11948e-07	1.29976e-01	MI:0276 (blue native page)
+34804	3.09368e-05	2.26275e-04	1.20278e-01	MI:0397 (two hybrid array)
+10916	8.01154e-06	7.25470e-05	9.94498e-02	MI:1356 (validated two hybrid)
+5765	4.03284e-06	3.83863e-05	9.50712e-02	MI:1314 (proximity-dependent biotin identification)
+29743	1.52068e-05	1.96083e-04	7.19711e-02	MI:1112 (two hybrid prey pooling approach)
+4943	2.23437e-06	3.18640e-05	6.55271e-02	MI:2222 (inference by socio-affinity scoring)
+
