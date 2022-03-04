@@ -9,6 +9,8 @@ conda install --file requirements.txt
 ```
 To run EdgeLinker, you must have a suitable java installation (> 1.8)
 
+## Supplementary Files:
+See https://github.com/Murali-group/tox_signaling_networks/blob/main/Supplementary-Files/README.md
 ## Regenerate Results
 The commands below outline the steps necessary to regenerate the results and figures from the paper.
 
