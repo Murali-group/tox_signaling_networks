@@ -15,8 +15,12 @@ To run EdgeLinker, you must have a suitable java installation (> 1.8)
 ### Interactome
 - Interactome: [`inputs/2018_01-toxcast-net/2019-02-18-human-ppi-d2d-dir-weighted-cap0_99.txt.gz`](https://github.com/Murali-group/tox_signaling_networks/blob/main/inputs/2018_01-toxcast-net/2019-02-18-human-ppi-d2d-dir-weighted-cap0_99.txt.gz)
 - Iteraction evidence: [`inputs/2018_01-toxcast-net/2018_01interactome-evidence.tsv.gz`](https://github.com/Murali-group/tox_signaling_networks/blob/main/inputs/2018_01-toxcast-net/2018_01interactome-evidence.tsv.gz)
-- UniProt to gene mapping: [`inputs/2018_01-toxcast-net/2018_01_uniprot_mapping.tsv`](https://github.com/Murali-group/tox_signaling_networks/blob/main/inputs/2018_01-toxcast-net/2018_01_uniprot_mapping.tsv)
 - Confidence scores for each evidence type with > 100 interactions: [`inputs/2018_01-toxcast-net/2019-02-18-edge-source-weights.tsv`](https://github.com/Murali-group/tox_signaling_networks/blob/main/inputs/2018_01-toxcast-net/2019-02-18-edge-source-weights.tsv)
+- UniProt to gene mapping: [`inputs/2018_01-toxcast-net/2018_01_uniprot_mapping.tsv`](https://github.com/Murali-group/tox_signaling_networks/blob/main/inputs/2018_01-toxcast-net/2018_01_uniprot_mapping.tsv)
+- Chemical identifier (EPA ACToR code) to name mapping: [`inputs/toxcast-tox21-v3/Chemical_Summary_190708.csv`](https://github.com/Murali-group/tox_signaling_networks/blob/main/inputs/toxcast-tox21-v3/Chemical_Summary_190708.csv)
+   - e.g., lovastatin: C75330755; BPA: C80057
+### Enriched Gene Ontology (GO) terms
+- All chemicals: [`outputs/2018_01-toxcast-d2d-p1_5-u1_25/weighted/stats/go-analysis/505chemicals-sig-terms-bonferroni-c0_01.tsv`](https://github.com/Murali-group/tox_signaling_networks/blob/main/outputs/2018_01-toxcast-d2d-p1_5-u1_25/weighted/stats/go-analysis/505chemicals-sig-terms-bonferroni-c0_01.tsv)
 ### Case Study References
 Coming soon.
 
