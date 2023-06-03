@@ -15,7 +15,7 @@ from src.utils import file_utils as utils
 from src import toxcast_utils as t_utils
 from src import toxcast_settings as t_settings
 from src import run_edgelinker
-from src import compute_stat_sig
+from src.stat_sig import compute_stat_sig
 from tqdm import tqdm
 # Python implementation of cycLinker
 #import cycLinker
@@ -206,7 +206,7 @@ def permute_and_run_edgelinker(opts, random_index):
     with open(edgelinker_out_files, 'w') as out:
         out.write('\n'.join(out_files))
     print("Running edgelinker on chemical %s: %s" % (chemical, out_pref))
-    run_edgelinker.runEdgeLinker(permuted_network_out_file, cyclinker_in_files, cyclinker_out_files, opts.k, 
+    run_edgelinker.runEdgeLinker(permuted_network_out_file, edgelinker_in_files, edgelinker_out_files, opts.k, 
                  edge_penalty=EDGE_PENALTY, rec_tfs_penalty=REC_TFS_PENALTY, multi_run=True)
 
     if opts.write_score_counts:

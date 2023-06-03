@@ -83,9 +83,9 @@ for i, version in enumerate(opts.version):
     network_weights = []
     # first plot the distribution of edge weights in the response networks
     # get all of the response network edges and their edge weight in the interactome
-    cyclinker_file = "%s/cyclinker/%%s-paths.txt" % (t_settings.RESULTSPREFIX) 
+    edgelinker_file = "%s/edgelinker/%%s-paths.txt" % (t_settings.RESULTSPREFIX) 
     for chemical in tqdm(chemicals):
-        edges = t_utils.getEdges(paths_file=cyclinker_file % (chemical), max_k=200, ties=True)
+        edges = t_utils.getEdges(paths_file=edgelinker_file % (chemical), max_k=200, ties=True)
         #tqdm.write("%d edges" % len(edges))
         for edge in edges:
             network_weights.append(edge_weights[edge])

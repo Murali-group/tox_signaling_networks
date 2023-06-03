@@ -126,13 +126,16 @@ def main(args):
 
             # get only the chemicals that have a significant response network
             if opts.sig_cutoff:
-                sig_chemicals = t_utils.getSigChemicals(RESULTSPREFIX, scope, sig_cutoff_type=opts.sig_cutoff_type, sig_cutoff=opts.sig_cutoff)
+                k = 150
+                if len(opts.k_to_test) == 1:
+                    k = opts.k_to_test[0]
+                sig_chemicals = t_utils.getSigChemicals(RESULTSPREFIX, scope, sig_cutoff_type=opts.sig_cutoff_type, sig_cutoff=opts.sig_cutoff, k=k)
                 nonsig_chemicals = set(chemicals).difference(sig_chemicals)
                 # write these to a file
                 sig_chemicals_file = "%s/sig-chemicals.txt" % (INPUTSPREFIX)
                 print("Writing the current set of significant chemicals to %s" % (sig_chemicals_file))
                 with open(sig_chemicals_file, 'w') as out:
-                    header = "# chemicals from scope: '%s', sig_cutoff_type: '%s', sig_cutoff: '%s'\n" % (scope, opts.sig_cutoff_type, opts.sig_cutoff)
+                    header = "# chemicals from k: %s, scope: '%s', sig_cutoff_type: '%s', sig_cutoff: '%s'\n" % (k, scope, opts.sig_cutoff_type, opts.sig_cutoff)
                     out.write(header)
                     out.write('\n'.join(sig_chemicals))
                 nonsig_chemicals_file = "%s/nonsig-chemicals.txt" % (INPUTSPREFIX)
@@ -514,7 +517,7 @@ def edgelinkerPermuteNetworks(interactome, scope, num_random_networks, max_k, k_
         # the user should select which k the significance values will be computed at
         # I am now using the seven values -k 25 -k 50 -k 75 -k 100 -k 150 -k 200 -k 500
         print("%s does not exist. Running compute_stat_sig.py with the --write-counts option to write it." % (chemical_k_scores))
-        cmd = "python src/compute_stat_sig.py " + \
+        cmd = "python src/stat_sig/compute_stat_sig.py " + \
               " --chemicals %s/chemicals.txt " % (INPUTSPREFIX) + \
               " --k-limit %d " % (max_k) + \
               " --group-by-prob " + \
@@ -594,7 +597,9 @@ def edgelinkerPermuteNetworks(interactome, scope, num_random_networks, max_k, k_
     # I'm not sure how to get this path automatically, so I'll just hard code it for now
     virtual_env = "source /data/jeff-law/tools/anaconda3/bin/activate  toxcast"
     # maybe I could just copy the entire current path(?)
-    jobs = [virtual_env]
+    jobs = []
+    if super_computer:
+        jobs = [virtual_env]
     start_index = 0
     for i in range(0, len(jobs_to_run), parallel_processes):
         # add the indexes of the jobs to run to the template
@@ -632,7 +637,9 @@ def edgelinkerPermuteNetworks(interactome, scope, num_random_networks, max_k, k_
                     #subprocess.check_call(job.split())
 
             # start the list of jobs over
-            jobs = [virtual_env]
+            jobs = []
+            if super_computer:
+                jobs = [virtual_env]
             # the new start index is the current end_index
             start_index = end_index
 

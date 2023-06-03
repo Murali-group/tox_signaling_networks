@@ -21,7 +21,7 @@ class StatSig:
         self.num_random_sets = num_random
         self.out_dir = out_dir
         self.group_by_prob = group_by_prob
-        self.pval_cutoff = 0.05
+        self.pval_cutoff = 0.01
 
         # define the paths to the pathlinker output files
         if paths_dir is not None:

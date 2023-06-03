@@ -425,14 +425,12 @@ def get_sig_chemicals(chemical_pvals, pval_col=5, sig_cutoff=0.05):
     return sig_chemicals
 
 
-def getPvals(resultsprefix, scope, sig_cutoff_type='FDR'):
+def getPvals(resultsprefix, scope, sig_cutoff_type='FDR', k=200):
     """ Function to retreive the pvalues for each chemical automatically.
         Currently only supports k 200 with FDR and BF pval corrections
     """
     print("Getting p-values for scope '%s'" % (scope))
     # get the significant chemicals
-    # TODO add a k option and get the column automatically from the header line
-    k = 200
     print("Using k %d" % (k))
     pvals_file = "%s/stats/stat-sig-%s/bfcorr_pval_qval.txt" % (resultsprefix, scope)
     with open(pvals_file, 'r') as file_handle:
@@ -455,10 +453,10 @@ def getPvals(resultsprefix, scope, sig_cutoff_type='FDR'):
     return chemical_pvals
 
 
-def getSigChemicals(resultsprefix, scope, sig_cutoff_type='FDR', sig_cutoff=0.05):
+def getSigChemicals(resultsprefix, scope, sig_cutoff_type='FDR', sig_cutoff=0.05, k=200):
     """ Function to retreive the set of significant chemicals (response networks) automatically
     """
-    chemical_pvals = getPvals(resultsprefix, scope, sig_cutoff_type='FDR')
+    chemical_pvals = getPvals(resultsprefix, scope, sig_cutoff_type='FDR', k=k)
     chemicals = [chemical for chemical in chemical_pvals if chemical_pvals[chemical] < sig_cutoff] 
     print("\t%d chemicals pass the significance cutoff of %0.2f with correction type of '%s'" % (len(chemicals), sig_cutoff, sig_cutoff_type))
 

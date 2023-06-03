@@ -33,6 +33,8 @@ def parseArguments():
             'default outputs/version/weighted/plots/summary-stats/summary-network-stats-version.png. If not specified, default is used.')
     parser.add_option('-o', '--out-file', type='string', metavar='STR',
             help='path/to/output_file.png. If not specified, default is used.')
+    parser.add_option('-k', '--k-to-test', type='int',
+            help='K to use to get the signaling networks')
     parser.add_option('', '--pdf', action='store_true',
             help='Also store a pdf of the figures')
     parser.add_option('','--poster',action="store_true",
@@ -59,13 +61,20 @@ for version in opts.version:
     #unsig_chemicals = set(chemicals).difference(set(sig_chemicals))
 
     #summary_file = "outputs/%s/weighted/stats/network-summaries.csv" % (version)
-    df = summary_stats.get_summary_stats(version=version, forced=opts.forced)
+    summary_file = "network_summaries_k%s.csv"% (opts.k_to_test)
+    df = summary_stats.get_summary_stats(
+            version=version, 
+            summary_file=summary_file,
+            k_to_test=opts.k_to_test,
+            forced=opts.forced)
     #df = t_utils.get_summary_stats(version=version, forced=True)
+    print(df.drop(columns=["net_hits", "net_nonhits", "inter_net_hits", "inter_net_nonhits", "inter_hits", "inter_nonhits", "pvals", "qvals"]).describe())
+    print(df[["net_hits", "net_nonhits", "inter_net_hits", "inter_net_nonhits", "inter_hits", "inter_nonhits", "pvals", "qvals"]].describe())
 
     # loop through the chemicals, significant chemicals and unsignificant chemicals
     for chemicals, postfix in [(chemicals, '')]:
         if opts.out_file is None:
-            out_file_name = "summary-network-stats-%s.png" % (version)
+            out_file_name = "summary-network-stats-%s-k%s.png" % (version, opts.k_to_test)
             out_dir = "%s/plots/summary-stats/" % (t_settings.RESULTSPREFIX)
             t_utils.checkDir(out_dir)
             out_file = "%s/%s" % (out_dir, out_file_name)

@@ -8,8 +8,12 @@ from src import toxcast_settings as t_settings
 from src.utils import file_utils as utils
 
 
-def get_summary_stats(version="2018_01-toxcast-d2d-p1_5-u1_25", 
-        summary_file="network_summaries.csv", scope="permute-dir-undir", forced=False):
+def get_summary_stats(
+        version="2018_01-toxcast-d2d-p1_5-u1_25", 
+        summary_file="network_summaries.csv", 
+        scope="permute-dir-undir", 
+        k_to_test=200,
+        forced=False):
     """ Function to aggregate summary statistics for every network
     returns a dataframe containing the counted metrics for each chemical
     """
@@ -59,15 +63,15 @@ def get_summary_stats(version="2018_01-toxcast-d2d-p1_5-u1_25",
         if os.path.isfile(pvals_file):
             with open(pvals_file, 'r') as file_handle:
                 header = file_handle.readline().rstrip().split('\t')
-            pval_col = header.index("200") + 1
+            pval_col = header.index(str(k_to_test)) + 1
             chemical_pvals = {chem: pval for chem, pval in utils.readColumns(pvals_file, 1, pval_col)}
         chemical_qvals = {} 
         qvals_file = "%s/stats/stat-sig-%s/bfcorr_pval_qval.txt" % (outputs_dir, scope)
         if os.path.isfile(qvals_file):
-            chemical_qvals = t_utils.getPvals(outputs_dir, scope, sig_cutoff_type="FDR")
+            chemical_qvals = t_utils.getPvals(outputs_dir, scope, sig_cutoff_type="FDR", k=k_to_test)
         for chemical in tqdm(chemicals):
-            #prots, paths = getProteins(paths=paths_template % chemical, max_k=200, ties=True)
-            paths = t_utils.getPaths(paths_template % chemical, max_k=200, ties=True)
+            #prots, paths = getProteins(paths=paths_template % chemical, max_k=k_to_test, ties=True)
+            paths = t_utils.getPaths(paths_template % chemical, max_k=k_to_test, ties=True)
             prots = set()
             num_paths = len(paths)
             edges = set()

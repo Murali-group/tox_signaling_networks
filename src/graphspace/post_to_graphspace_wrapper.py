@@ -146,7 +146,7 @@ def write_revigo_color_files(chemicals, RESULTSPREFIX, **kwargs):
         out_prefix = "%s/%s" % (out_dir, chemical)
         out_file = "%s-colors.tsv" % (out_prefix) 
         # first read the david results file
-        david_file = "%s/stats/go-analysis/chemical-reports/%s.txt" % (RESULTSPREFIX, chemical)
+        david_file = "%s/stats/go-analysis-k150/chemical-reports/%s.txt" % (RESULTSPREFIX, chemical)
         print("reading %s" % (david_file))
         df = pd.read_csv(david_file, sep='\t')
         print(df.head())
@@ -166,11 +166,11 @@ def write_revigo_color_files(chemicals, RESULTSPREFIX, **kwargs):
                 print("ERROR: --revigo-file '%s' not found." % (kwargs['revigo_file']))
                 sys.exit()
             print("reading %s" % (kwargs['revigo_file']))
-            df_r = pd.read_csv(kwargs['revigo_file'], sep=',')
+            df_r = pd.read_csv(kwargs['revigo_file'], sep='\t')
             print(df_r.head())
             # sort by pval
             #df_r = df_r.sort_values("log10 p-value")
-            term_names = dict(zip(df_r['term_ID'], df_r['description']))
+            term_names = dict(zip(df_r['TermID'], df_r['Name']))
             selected_terms = list(term_names.keys())
         elif kwargs.get('term_counts_file'):
             if not os.path.isfile(kwargs['term_counts_file']):
@@ -219,24 +219,26 @@ def write_colors_file(out_file, functions, function_names, function_prots, funct
     function_names = shorten_names(function_names)
     if colors is None:
         colors = COLORS
-    if len(functions) > len(colors):
-        print("\tWarning: # functions %d exceeds # colors %d. Limiting functions to the %d colors" % (len(functions), len(colors), len(colors)))
-        prots = set([p for prots in function_prots.values() for p in prots.split('|')])
-        prots_used = set()
-        new_funcs = []
-        #for f in sorted(function_prots, key=lambda f: len(function_prots[f]), reverse=True):
-        for f in functions:
-            f_prots = set(function_prots[f].split('|'))
-            # only keep functions if they have some unique annotations
-            if len(f_prots - prots_used) < 2:
-                continue
-            else:
-                new_funcs.append(f)
-                prots_used.update(f_prots)
-        functions = new_funcs
-        if len(new_funcs) > len(colors):
-            # limit the pathways to the number of colors
-            functions = new_funcs[:len(colors)]
+    colors += colors
+    colors += colors
+#    if len(functions) > len(colors):
+#        print("\tWarning: # functions %d exceeds # colors %d. Limiting functions to the %d colors" % (len(functions), len(colors), len(colors)))
+#        prots = set([p for prots in function_prots.values() for p in prots.split('|')])
+#        prots_used = set()
+#        new_funcs = []
+#        #for f in sorted(function_prots, key=lambda f: len(function_prots[f]), reverse=True):
+#        for f in functions:
+#            f_prots = set(function_prots[f].split('|'))
+#            # only keep functions if they have some unique annotations
+#            if len(f_prots - prots_used) < 2:
+#                continue
+#            else:
+#                new_funcs.append(f)
+#                prots_used.update(f_prots)
+#        functions = new_funcs
+#        if len(new_funcs) > len(colors):
+#            # limit the pathways to the number of colors
+#            functions = new_funcs[:len(colors)]
 
     function_colors = {}
     available_colors = set(colors)
@@ -356,8 +358,7 @@ def build_graph_and_post(
         version, interactome, rec_tfs_file, RESULTSPREFIX, paths_file,
         chemical, max_k=200, graph_name="test",
         #postfix='-'+version, tag=version, chemical_color_file=)
-        graph_attr_file=None, ev_file=None,
-        datadir="/home/jeffl/svnrepo/data", **kwargs):
+        graph_attr_file=None, ev_file=None, **kwargs):
     # get the "evidence version" which is used to get the CSBDB related files
     #ev_version = t_utils.get_ev_version(version)
 
@@ -537,6 +538,10 @@ def constructGraph(
             graph_attr[n]['parent'] = parent
         # only overwrite the parent if it is a source or target
         elif node_type == 'source' or node_type == 'target':
+            graph_attr[n]['parent'] = parent
+        # if this node has other attributes, but not a parent node yet, 
+        # set the default parent
+        if 'parent' not in graph_attr[n]:
             graph_attr[n]['parent'] = parent
 
         # set the name of the node to be the gene name and add the k to the label
@@ -888,7 +893,7 @@ def setup_parser():
             help="Version of the PPI to run. Options are: %s." % (', '.join(t_settings.ALLOWEDVERSIONS)))
     group.add_argument('--mapping-file', default="inputs/2018_01-toxcast-net/2018_01_uniprot_mapping.tsv",
             help='File to map to a different namespace. Network/edge IDs (uniprot ids) should be in the first column with the other namespace (gene name) in the second')
-    group.add_argument('--evidence-file', default="inputs/2018_01-toxcast-net/2018_01interactome-evidence.tsv",
+    group.add_argument('--evidence-file', default="inputs/2018_01-toxcast-net/2018_01interactome-evidence.tsv.gz",
             help='File containing the evidence for each edge in the interactome.')
     group.add_argument('--revigo-file', 
             help="File containing the outputs of REVIGO for coloring the nodes in the graph")
@@ -898,8 +903,8 @@ def setup_parser():
             help="File containing the CTD phosphorylations interactions per chemical. Will be used to add a double border to nodes with support.")
     group.add_argument('--single-run','-S', type=str, action='append',
             help='Run only a single chemical. Can specify multiple chemicals by listing this option multiple times.')
-    group.add_argument('--k-to-post', type=int, default=200,
-            help='Value of k to test for significance. Multiple k values can be given.')
+    group.add_argument('--k-to-post', type=int, default=150,
+            help='Cutoff on number of paths to include in the network to post.')
     group.add_argument('--forcepost',action='store_true', default=False,
             help='Force the network to be posted to graphspace even if json file already exists')   
 

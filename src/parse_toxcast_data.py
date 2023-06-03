@@ -37,6 +37,9 @@ class ToxCastData:
         self.chemical_summary_file = "%s/Chemical_Summary_%s.csv" % (self.input_dir, self.version_date)
         self.zscore_file = "%s/zscore_Matrix_%s.csv" % (self.input_dir, self.version_date)
         self.hitc_file = "%s/hitc_Matrix_%s.csv" % (self.input_dir, self.version_date)
+        # instead of using the hitc file, define hits using the ac50 file
+        self.ac50_file = "%s/ac50_Matrix_%s.csv" % (self.input_dir, self.version_date)
+        self.ac50_cutoff = 50
         #self.chemical_types_file = "%s/chemical_types.tsv" % (self.input_dir)
 
         # output files
@@ -158,14 +161,20 @@ class ToxCastData:
         self.get_chemical_maps()
 
         # parse the raw files and write the relevant content to file
-        print("reading %s" % (self.hitc_file))
-        df = pd.read_csv(self.hitc_file, header=0, index_col=0).replace("NA",np.nan)
+        print("reading %s" % (self.ac50_file))
+        df = pd.read_csv(self.ac50_file, header=0, index_col=0).replace("NA",np.nan).astype(float)
         # header line contains all of the assay names
         self.hit_assays = list(df.columns)
         # keep only the chemicals that have more than 500 non-NA values
         df.dropna(thresh=500, inplace=True)
         print("\t%s chemicals with > 500 non-NAs" % (len(df.index)))
-        self.chemical_assay_hits = df
+        # define hits to be AC50 < cutoff e.g., 100
+        #for ac50_cutoff in [50, 100, 200, 500, 10000]:
+        #    print(f"# assays that pass ac50_cutoff {ac50_cutoff}")
+        #    print(df.apply(lambda x: x < ac50_cutoff).astype(int).sum().sum())
+        print(f"Applying an AC50 cutoff '{self.ac50_cutoff}' to define the hit matrix")
+        df_hits = df.applymap(lambda x: x < self.ac50_cutoff if not pd.isnull(x) else x).astype(float)
+        self.chemical_assay_hits = df_hits
 
         print("reading %s" % (self.zscore_file))
         df = pd.read_csv(self.zscore_file, header=0, index_col=0).replace("NA",np.nan)
@@ -249,8 +258,12 @@ class ToxCastData:
             df_tfs = df_tfs[~df_tfs['intended_target_family'].isin(["nuclear receptor", "gpcr"])]
         self.receptor_assays.update(dict(zip(df_rec['assay_component_endpoint_name'], 
             df_rec['intended_target_uniprot_accession_number'])))
+        # remove attagene assays as those are TF assays (none of them are hit for receptors anyway)
+        self.receptor_assays = {a: prots for a, prots in self.receptor_assays.items() if 'ATG' not in a}
         self.tf_assays.update(dict(zip(df_tfs['assay_component_endpoint_name'], 
             df_tfs['intended_target_uniprot_accession_number'])))
+        #self.receptors = set(p for receptors in self.receptor_assays.values() for p in receptors)
+        #self.tfs = set(p for tfs in self.tf_assays.values() for p in tfs)
         # also store the prots for each assay, and the assays for each prot
         self.assayNametoAccHuman.update(dict(zip(df['assay_component_endpoint_name'], 
             df['intended_target_uniprot_accession_number'])))
@@ -269,8 +282,8 @@ class ToxCastData:
         print("%s human accession numbers"%str(len(self.assayAcctoNameHuman)))
         print("%s receptor assays"%str(len(self.receptor_assays)))
         print("%s tf assays"%str(len(self.tf_assays)))
-        print("%s receptor acc"%str(len(set(self.receptor_assays.values()))))
-        print("%s tf acc"%str(len(set(self.tf_assays.values()))))
+        print("%s receptor acc"%str(len(set(p for receptors in self.receptor_assays.values() for p in receptors))))
+        print("%s tf acc"%str(len(set(p for tfs in self.tf_assays.values() for p in tfs))))
         # skip this for now as it doesn't seem to be working
         #print("Checking to see if all acc are primary")
         #csbdb_interface = csbdb.Interface()
@@ -286,10 +299,13 @@ class ToxCastData:
     def build_chemical_acc_map(self, zscore_cutoff=None):
         """ zscore_cutoff is an option to only include the hits that have a zscore > X (e.g., 3)
         """
+        chemical_protein_hit_list = {}
         # structure of the dictionary being built:
         # keep track of the uniprot IDs not in the network
         #not_in_net = set()
-        for i, chemical in enumerate(self.chemical_assay_hits.index):
+        for i, chemical in enumerate(tqdm(self.chemical_assay_hits.index)):
+            curr_chem_prot_hit_list = defaultdict(list)
+            curr_chem_prot_hit = defaultdict(list)
             # we are looping through the assays, but what we really want to determine is if the 
             # proteins are responsive to the chemical, or hit.
             # as such, we find all of the assays corresponding to a protein 
@@ -303,24 +319,51 @@ class ToxCastData:
                         int(hit) >= 0 and assay in self.assayNametoAccListHuman: 
                     prots = self.assayNametoAccListHuman[assay]
                     for prot in prots:
-                        # skip nodes that are not in the network
-                        # If any of the assays report a hit, we will set it as hit for the chemical
-                        # default is 0 (non-hit)
-                        if prot not in self.chemical_protein_hit[chemical]:
-                            self.chemical_protein_hit[chemical][prot] = 0
-
+                        # Many proteins have both an up/down version, so if either of those is hit,
+                        # we will set it as a hit for the chemical
+                        # 2023-02-02 UPDATE: For the 7 proteins tested by Tox21 assays, they overlap with ATG assays.
+                        # Only label a protein as hit if there is consensus among all the assays testing that protein.
+                        # To determine a consensus, append the hit values to a list
+                        curr_chem_prot_hit_list[prot].append((assay, int(hit), assay in self.receptor_assays, assay in self.tf_assays))
                         if int(hit) == 1 and (zscore_cutoff is None or zscore > zscore_cutoff):
-                            # if any of the hits are non-zero, label it as a 1
-                            self.chemical_protein_hit[chemical][prot] = 1
                             # keep the biggest zscore for this protein
                             if prot not in self.chemical_protein_zscore[chemical] or zscore > self.chemical_protein_zscore[chemical][prot]:
                                 self.chemical_protein_zscore[chemical][prot] = zscore
+                            curr_chem_prot_hit[prot].append((1, 'TOX21' in assay))
                             # add the assay's corresponding protein to the list of receptor or tf assays
                             # don't allow duplicates
                             if assay in self.receptor_assays:
                                 self.chemical_rec[chemical].add(prot)
-                            elif assay in self.tf_assays: 
+                            if assay in self.tf_assays: 
                                 self.chemical_tfs[chemical].add(prot)
+                        else: 
+                            curr_chem_prot_hit[prot].append((0, 'TOX21' in assay))
+            # for each protein, determine if it is a hit or not
+            chem_prot_hit = {}
+            for prot, hits_and_types in curr_chem_prot_hit.items():
+                non_tox21_hits = [hit for hit, tox21 in hits_and_types if not tox21]
+                tox21_hits = [hit for hit, tox21 in hits_and_types if tox21]
+                if len(non_tox21_hits) > 0 and len(tox21_hits) > 0:
+                    hit = min([max(non_tox21_hits)] + tox21_hits)
+                elif len(non_tox21_hits) > 0:
+                    hit = max(non_tox21_hits)
+                elif len(tox21_hits) > 0:
+                    hit = min(tox21_hits)
+                chem_prot_hit[prot] = hit
+            chemical_protein_hit_list[chemical] = curr_chem_prot_hit_list
+            self.chemical_protein_hit[chemical] = chem_prot_hit
+            # update the chemical's receptors and tfs
+            self.chemical_rec[chemical] = set(p for p in self.chemical_rec[chemical] if chem_prot_hit[p] == 1)
+            self.chemical_tfs[chemical] = set(p for p in self.chemical_tfs[chemical] if chem_prot_hit[p] == 1)
+
+        # now write the hits to a file to see how often a protein is only a "hit" for a small fraction of assays
+        out_file = "%s/chem_prot_assay_hit_vals.csv" % (self.parsed_dir) 
+        with open(out_file, 'w') as out:
+            out.write("chem,prot,assay,hit\n")
+            for chem, prot_hit_list in chemical_protein_hit_list.items():
+                for prot, assay_hit_list in prot_hit_list.items():
+                    for assay, hit, rec_assay, tf_assay in assay_hit_list:
+                        out.write(f"{chem},{prot},{assay},{hit},{rec_assay},{tf_assay}\n")
 
         #print("\t%s uniprot IDs were not in the network and were ignored: %s" % (len(not_in_net), ', '.join(not_in_net)))
         # don't allow proteins to be in both the list of receptors and the list of tfs
@@ -469,6 +512,7 @@ class ToxCastData:
                 zscores += [self.chemical_protein_zscore[chem][p] for p in prots]
             for chem, prots in self.chemical_tfs.items():
                 zscores += [self.chemical_protein_zscore[chem][p] for p in prots]
+            zscores = [z for z in zscores if not np.isnan(z)]
             # use the maximum to normalize the zscores
             max_zscore = max(zscores)
             print("max zscore is: %0.2f" % max_zscore)

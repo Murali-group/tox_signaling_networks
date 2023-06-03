@@ -93,14 +93,14 @@ def main(chemicals, paths_dir, out_dir,
     print("limiting CTD phosphorylation interactions to those in the interactome")
     ctd_chem_itxs = {c: p & ppi_genes for c, p in ctd_chem_itxs.items()}
     # also add the other chemicals
-    for c in chemicals:
+    for c, _ in chem_prots.items():
         if c not in ctd_chem_itxs:
             ctd_chem_itxs[c] = set()
 
     chem_pval = {}
     chem_net_prots_with_ctd = {} 
     # TODO try both making random subsets and the hypergeometric test
-    pop_size = len(background_genes)
+    pop_size = len(ppi_genes)
     #num_success_states_in_pop = len(set(p for c,p in ctd_itxs.items()))
     for chem, prots in chem_prots.items():
         genes = set(uniprot_to_gene[p] for p in prots)
@@ -115,6 +115,11 @@ def main(chemicals, paths_dir, out_dir,
         # number of success stats in the population is the number of phosphorylation interactions of this chemical
         num_success_states_in_pop = len(ctd_chem_itxs[chem])
         M, n, N, k = pop_size, num_success_states_in_pop, num_draws, num_successes
+        # Sanity check
+        #if chem == "C7487947":
+        #    print("len(background_genes), len(ctd_chem_itxs[chem]), len(genes), len(genes & ctd_chem_itxs[chem])")
+        #    print("pop_size", "num_success_states_in_pop", "num_draws", "num_successes")
+        #    print(M, n, N, k)
         # Use k-1 since the survival function (sf) gives 1-cdf. The cdf at k gives the probability of drawing k or fewer. The sf at k is the probability of drawing k+1 or more
         # https://blog.alexlenail.me/understanding-and-implementing-the-hypergeometric-test-in-python-a7db688a7458
         # https://github.com/scipy/scipy/issues/7837
@@ -184,22 +189,22 @@ def load_prots(chemicals, paths_dir, out_dir, k_limit=200, **kwargs):
     else:
         # one chemical and protein ID pair on each line
         prots_file = "%s/chem-prots.txt" % (out_dir)
-        if not kwargs['forced'] and os.path.isfile(prots_file):
-            print("reading %s. Use --forced to overwrite" % (prots_file))
-            s = pd.read_csv(prots_file, sep='\t', index_col=0, header=None, squeeze=True)
-            # now convert it back to a dictionary
-            chem_prots = {chem: prots.to_list() for chem, prots in s.groupby(s.index)}
-        else:
-            # load the proteins in each chemical's network
-            edgelinker_output = paths_dir+'/%s-paths.txt'
-            print("Reading paths for each chemical network from: %s" % (edgelinker_output))
-            chem_prots = {}
-            for chemical in chemicals:
-                proteins = t_utils.getProteins(paths=edgelinker_output % chemical, max_k=k_limit)
-                chem_prots[chemical] = list(proteins)
-            s = pd.Series(chem_prots).explode()
-            print("writing %s" % (prots_file))
-            s.to_csv(prots_file, sep='\t', header=False)
+        #if not kwargs['forced'] and os.path.isfile(prots_file):
+        #    print("reading %s. Use --forced to overwrite" % (prots_file))
+        #    s = pd.read_csv(prots_file, sep='\t', index_col=0, header=None, squeeze=True)
+        #    # now convert it back to a dictionary
+        #    chem_prots = {chem: prots.to_list() for chem, prots in s.groupby(s.index)}
+        #else:
+        # load the proteins in each chemical's network
+        edgelinker_output = paths_dir+'/%s-paths.txt'
+        print("Reading paths for each chemical network from: %s" % (edgelinker_output))
+        chem_prots = {}
+        for chemical in chemicals:
+            proteins = t_utils.getProteins(paths=edgelinker_output % chemical, max_k=k_limit)
+            chem_prots[chemical] = list(proteins)
+        s = pd.Series(chem_prots).explode()
+        print("writing %s" % (prots_file))
+        s.to_csv(prots_file, sep='\t', header=False)
 
         reports_dir = "%s/chemical-reports/" % (out_dir)
     t_utils.checkDir(os.path.dirname(reports_dir))

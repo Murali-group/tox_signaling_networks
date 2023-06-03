@@ -63,6 +63,9 @@ def main(chemicals, paths_dir, out_dir, k_limit=200,
     if kwargs['run_on_hits']:
         toxcast_data = t_utils.loadToxcastData()
         chem_prots = toxcast_data.chemical_protein_hit
+        # limit the prots to those that are hit
+        chem_prots = {c: [p for p, hit in hit_dict.items() if hit == 1] 
+                      for c, hit_dict in chem_prots.items()}
         reports_dir = "%s/chemical-hits-reports/" % (out_dir)
     else:
         if not forced and os.path.isfile(prots_file):
