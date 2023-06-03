@@ -1,506 +1,390 @@
 #Chemical Name	ID	# rec	# tfs
+N-Isopropyl-N'-phenyl-p-phenylenediamine	C101724	3	4
+4-Nitro-N-phenylaniline	C836306	1	1
 AVE3247	CNOCAS47383	2	1
-Dodecylbenzenesulfonic acid	C27176870	21	2
-Hydroquinone	C123319	2	16
-1,3-Dichlorobenzene	C541731	1	3
-Tris(methylphenyl) phosphate	C1330785	1	1
-AVE3295	C478263988	2	3
-Tripropylene glycol diacrylate	C42978665	1	23
-Didecyldimethylammonium chloride	C7173515	30	23
-4-tert-Butylcatechol	C98293	5	10
-Cyclopamine	C4449518	1	18
-Simvastatin	C79902639	2	4
-SR146131 trifluoroacetate (1:1)	C221671621	2	35
-CP-544439	C230954093	2	4
-Metiram	C9006422	13	2
-Perfluorodecanoic acid	C335762	10	23
-D&C Red 27	C13473262	4	17
-Rifampicin	C13292461	2	3
-Forchlorfenuron	C68157608	7	19
-Triphenyl phosphates isopropylated	C68937417	2	9
-Tamoxifen citrate	C54965241	12	4
-Oxytetracycline hydrochloride	C2058460	3	1
-Mancozeb	C8018017	21	18
-N,N-Dimethyloctylamine	C7378996	2	6
-Fludioxonil	C131341861	1	19
-1-Chloro-2-nitro-4-(trifluoromethyl)benzene	C121175	2	2
-N-Isopropyl-N'-phenyl-p-phenylenediamine	C101724	3	9
-SB236057A	C180084019	14	9
-Hexaconazole	C79983714	5	15
-2,2-Dibromo-3-nitrilopropionamide	C10222012	1	10
-Oxytetracycline dihydrate	C6153646	9	6
-Caffeine	C58082	2	5
-Farglitazar	C196808454	8	13
-Metribuzin	C21087649	1	1
-Temephos	C3383968	2	15
-3,3,4,4-Tetrachlorotetrahydrothiophene 1,1-dioxide	C3737415	2	14
-Benzethonium chloride	C121540	4	12
-Fenoxycarb	C72490018	1	16
-Di-n-octyl phthalate	C117840	1	1
-Azinphos-methyl	C86500	3	12
-SAR102608	C1068967963	1	3
-Musk ketone	C81141	1	2
-N-Hydroxybenzamide	C495181	1	18
-CP-465394	CNOCAS47255	1	2
-4-Hexylresorcinol	C136776	4	20
-Fandosentan potassium salt	C221246124	6	17
-SSR126768	CNOCAS47379	11	21
-Spiroxamine	C118134308	8	21
-YM218	CNOCAS48176	9	32
-MK-578	C313994795	2	20
-4-Anilinophenol	C122372	1	8
-Theophylline	C58559	2	7
-FD&C Yellow 5	C1934210	3	1
-Cyproterone acetate	C427510	1	22
-Tributyltin methacrylate	C2155706	29	19
-1,3-Benzenediamine	C108452	1	2
-4-Hydroxytamoxifen	C68392358	10	12
-GW473178E methyl benzene sulphonic acid	C263553339	6	6
-Benzo(b)fluoranthene	C205992	1	4
-Mifepristone	C84371653	3	27
-Fluazifop-butyl	C69806504	1	2
-Captafol	C2425061	2	2
-2,5-Dimethylphenol	C95874	1	1
-Diquat dibromide D4	CNOCAS44337	2	14
-(9E,12Z)-9,12-Tetradecadien-1-ol acetate	C31654770	1	22
-N,N-Dimethyl-N-benzyl-N-octadecylammonium chloride	C122190	5	22
-Retinol palmitate	C79812	2	3
-2,4-Dichlorophenoxybutyric acid	C94826	1	2
-meso-Hexestrol	C84162	6	12
-Prallethrin	C23031369	2	35
-Ethanolamine	C141435	1	1
-MK-968	CNOCAS47334	1	20
-Danazol	C17230885	1	33
-Glycerol	C56815	1	3
-3-Hydroxyfluorene	C6344678	2	24
-2,3,4,6-Tetrachlorophenol	C58902	2	13
-4,4'-Sulfonylbis[2-(prop-2-en-1-yl)phenol]	C41481667	18	23
-Alachlor	C15972608	1	11
-Sodium myristyl sulfate	C1191500	25	1
-3-Amino-9-ethylcarbazole	C132321	2	9
-Quercetin	C117395	1	7
-Benzidine	C92875	1	2
-Chlorobenzilate	C510156	1	5
-Trixylyl phosphate	C25155231	3	15
-Phosalone	C2310170	2	17
-Chlorpyrifos oxon	C5598152	2	10
-6-Thioguanine	C154427	1	7
-3,3'-Dichlorobenzidine dihydrochloride	C612839	2	10
-SSR 103800	C1075752907	7	7
-Gentian Violet	C548629	29	22
-3,3'-Dimethoxybenzidine dihydrochloride	C20325400	2	18
-Daidzein	C486668	1	3
-1,2-Dibromo-2,4-dicyanobutane	C35691657	4	29
-Clotrimazole	C23593751	1	19
-C.I. Solvent Yellow 14	C842079	1	8
-3,4-Dinitrotoluene	C610399	1	4
-Chloramben	C133904	1	1
-Etoxazole	C153233911	2	7
-Dicyclohexylcarbodiimide	C538750	2	11
-FD&C Red 3	C16423680	5	8
-3-(Dodecenyl)dihydro-2,5-furandione	C25377735	1	2
-Triclosan	C3380345	6	16
-Isoxaben	C82558507	1	11
-Fenoxaprop-(2S)-ethyl	C113776208	1	1
-Clorophene	C120321	18	3
-Fenoxaprop-ethyl	C66441234	1	1
-1-Nitronaphthalene	C86577	1	3
-Tributyltin chloride	C1461229	26	22
-PD 0343701	C676116044	1	13
-Benfuracarb	C82560541	2	14
-beta-Ionone	C79776	1	1
-PharmaGSID_47337	C1061517621	11	27
-Mercuric chloride	C7487947	27	6
-PHA-00543613	C478149530	3	8
-Bromadiolone	C28772567	5	30
-Methadone hydrochloride	C1095905	13	8
-CP-105696	C158081993	1	7
-4,4'-Diaminobiphenyl methane	C101779	1	4
-(7S)-Hydroprene	C65733188	1	26
-Tannic acid	C1401554	3	4
-4-(2-Methylbutan-2-yl)phenol	C80466	2	13
-5HPP-33	C105624860	1	26
-Tetrac	C67301	4	38
-Tetradifon	C116290	1	8
-1,3-Dibromo-5,5-dimethylhydantoin	C77485	1	2
-MK-812	C851916422	2	2
-Lovastatin	C75330755	1	7
-(2S,3S)-3-Methyl-2-(3-oxo-1,2-benzothiazol-2(3H)-yl)pentanoic acid	C177785476	1	5
-SAR102779	CNOCAS47387	14	33
-PharmaGSID_48505	CNOCAS48505	7	17
-Spironolactone	C52017	1	12
-Resveratrol	C501360	8	14
-Fenpyroximate (Z,E)	C111812589	1	21
-n-Undecyl cyanide	C2437254	1	18
-Retinol	C68268	1	24
-SB413217A	CNOCAS47325	6	2
-Fenarimol	C60168889	3	17
-2,2,4-Trimethyl-1,3-pentanediol diisobutyrate	C6846500	1	1
-2,6,8-Trimethyl-4-nonanone	C123182	1	3
-1,2-Dinitrobenzene	C528290	1	4
-Thidiazuron	C51707552	2	21
-Diethylstilbestrol	C56531	12	13
-Flutamide	C13311847	2	18
-Esfenvalerate	C66230044	2	2
-Chlorambucil	C305033	1	7
-Propargite	C2312358	3	15
-Thiram	C137268	7	3
-Bronopol	C52517	3	25
-4-Nonylphenol, branched	C84852153	3	23
-Perfluorononanoic acid	C375951	5	11
-PharmaGSID_48519	C686756876	3	21
-Ethylhexadecyldimethylammonium bromide	C124038	6	22
-SSR180711	C298198524	7	8
-Methoxychlor	C72435	2	4
-Phenolphthalein	C77098	4	30
-Icaridin	C119515387	2	4
-Methylcyclopentadiene dimer	C26472004	1	12
-Rotenone	C83794	1	19
-4-Chloroaniline	C106478	1	4
-N-Phenyl-1,4-benzenediamine	C101542	10	3
-2,4-Dihydroxybenzophenone	C131566	2	8
-Propanil	C709988	3	10
-Resmethrin	C10453868	6	11
-Prochloraz	C67747095	5	12
-Deisopropylatrazine	C1007289	3	2
-Chlorpromazine hydrochloride	C69090	23	16
-Parathion	C56382	2	10
-Phosmet	C732116	5	3
-Difenzoquat metilsulfate	C43222486	7	1
-EPN	C2104645	1	5
-2-Hydroxy-4-methoxybenzophenone	C131577	1	16
-PharmaGSID_47315	C444610917	14	26
-Pyriproxyfen	C95737681	1	12
-Kepone	C143500	5	8
-Cypermethrin	C52315078	3	2
-Benodanil	C15310017	1	2
-AVE8488	CNOCAS47349	11	18
-D&C Blue No. 9	C130201	1	4
-CP-283097	C171866312	4	11
-5-Amino-2-methylphenol	C2835952	2	4
-Methotrexate	C59052	6	1
-Propiconazole	C60207901	5	16
-Chlorthal-dimethyl	C1861321	1	2
-CI-1018	CNOCAS47248	1	23
-Octhilinone	C26530201	11	33
-Octylbicycloheptenedicarboximide	C113484	1	13
-Sorbitan, mono-(9Z)-9-octadecenoate	C1338438	5	1
+Tri-o-cresyl phosphate	C78308	1	6
+Propiconazole	C60207901	5	10
+4-(1,1,3,3-Tetramethylbutyl)phenol	C140669	8	2
+Thidiazuron	C51707552	2	7
 Ethofumesate	C26225796	2	7
-Ziram	C137304	1	2
-Fenhexamid	C126833178	1	11
-FR167356	C174185161	1	18
-UK-333747	C197077557	1	1
-tert-Butylphenyl diphenyl phosphate	C56803373	1	7
-CJ-013610	C249296433	8	28
-3,5,3'-Triiodothyronine	C6893023	3	3
-Formetanate hydrochloride	C23422539	1	18
-Cyclanilide	C113136779	6	2
-1,2-Benzenedicarboxaldehyde	C643798	5	1
-2,4-Di-tert-butylphenol	C96764	1	2
-Dodecyltrimethylammonium chloride	C112005	17	10
-Isooctyl 2-mercaptoacetate	C25103097	1	1
-Endothal	C145733	1	22
-Reserpine	C50555	3	19
-17beta-Trenbolone	C10161338	1	15
-Clomazone	C81777891	1	8
-Decane	C124185	2	3
-PHA-00568487	C527680564	1	7
-Cyprodinil	C121552612	8	27
-Carboxin	C5234684	1	1
-Elzasonan	C361343193	6	10
-Benzylhexadecyldimethylammonium chloride	C122189	6	18
-Coumaphos	C56724	1	2
-4-Aminofolic acid	C54626	6	8
-CI-1044	CNOCAS47291	1	9
-PharmaGSID_48166	CNOCAS48166	1	36
-Resorcinol	C108463	1	7
-2-Amino-5-azotoluene	C97563	1	14
-7-Diethylamino-4-methylcoumarin	C91441	2	9
-1,2,5,6,9,10-Hexabromocyclododecane	C3194556	1	25
-Profenofos	C41198087	1	10
-3,3'-Dimethoxybenzidine	C119904	1	11
-N,N,N-Trimethyloctadecan-1-aminium chloride	C112038	4	33
-Benoxacor	C98730042	1	20
-Cyanuric acid	C108805	1	4
-Quizalofop-ethyl	C76578148	1	1
-Dihexyl phthalate	C84753	1	7
-UK-416244	C402910274	13	16
-4-Aminoazobenzene	C60093	1	19
-Octyl gallate	C1034011	12	5
-Mizolastine	C108612459	2	6
-Grinstad Soft-N-Safe	CNOCAS47394	1	8
-Pyrimethamine	C58140	6	22
-Acetamiprid	C135410207	1	1
-Pentane-1,5-diyl dibenzoate	C6624733	1	1
-Dapsone	C80080	1	1
-Fenpropathrin	C39515418	2	2
-Fenaminosulf	C140567	1	8
-Amitraz	C33089611	3	6
-Pyraclostrobin	C175013180	3	12
-FR130739	C136042198	1	1
-Phenylmercuric acetate	C62384	32	18
-Toluene 2,4-diisocyanate	C584849	1	1
-4-Nitro-N-phenylaniline	C836306	1	6
-Bromoxynil	C1689845	1	13
-Tetraethyleneglycol dimethacrylate	C109171	1	1
-Fabesetron hydrochloride	C129299907	17	20
-Lactofen	C77501634	1	8
-1-Naphthylamine	C134327	2	15
-Binapacryl	C485314	1	32
-2,2'-Dibenzoylaminodiphenyl disulfide	C135579	2	6
-Anthralin	C1143380	1	2
-Tributyl phosphate	C126738	1	5
-Tetraconazole	C112281773	5	17
-Rosiglitazone maleate	C155141290	2	3
-1-Amino-2-methylanthraquinone	C82280	3	5
-Thiacloprid	C111988499	1	1
-Tolclofos-methyl	C57018049	2	2
-8-Hydroxyquinoline	C148243	1	12
-Fluazinam	C79622596	1	23
-Carbophenothion	C786196	1	4
-Permethrin	C52645531	2	4
-Isopentyl butyrate	C106274	1	6
-SR125047	CNOCAS47342	21	8
-2,3-Diaminotoluene	C2687254	4	19
-Disulfiram	C97778	7	34
-AVE5638	C725228455	22	24
-Xanthone	C90471	1	3
-Triethylene glycol bis(3-tert-butyl-4-hydroxy-5-methylphenyl)propionate	C36443682	2	6
-Tetradonium bromide	C1119977	4	14
-Tetrabromobisphenol A bis(2-hydroxyethyl) ether	C4162452	1	29
-Triclocarban	C101202	1	9
-4,5-Dichloro-3H-1,2-dithiol-3-one	C1192525	3	29
-Cyazofamid	C120116883	2	15
-Diphenhydramine hydrochloride	C147240	14	12
-Potassium perfluorohexanesulfonate	C3871996	1	3
-1-Hydroxypyrene	C5315797	3	2
-N,N'-Dicyclohexylthiourea	C1212299	1	2
-SSR 241586 HCl	CNOCAS47353	23	10
-N-Cyclohexyl-2-benzothiazolesulfenamide	C95330	3	16
-PharmaGSID_47263	C349495427	5	3
-PharmaGSID_48509	CNOCAS48509	9	27
-Pyrimethanil	C53112280	5	10
-2-(Morpholin-4-yldithio)-1,3-benzothiazole	C95329	2	29
-1-Benzylquinolinium chloride	C15619484	5	7
-Piperonyl butoxide	C51036	1	5
-SSR146977	C264618442	12	25
-Octabenzone	C1843056	1	1
-Methyl linoleate	C112630	3	20
-Propylparaben	C94133	1	20
-CJ-013790	C179465715	8	15
-1,1':3',1''-Terphenyl	C92068	1	5
-Testosterone propionate	C57852	2	25
-Hexachlorophene	C70304	3	21
-Propyl gallate	C121799	3	13
-CP-122721	C145742285	12	12
-Niclosamide	C50657	1	16
-HMR1171	C328392467	19	6
-Methyl dodecanoate	C111820	2	2
-CI-1029	C207736058	3	4
-Chlorpheniramine maleate	C113928	3	5
-Allethrin	C584792	2	25
-S-Bioallethrin	C28434006	1	9
-Bismaleimide	C13676545	2	25
-UK-343664	C215297271	1	15
+Allethrin	C584792	2	12
+Amiodarone hydrochloride	C19774824	25	9
+Prothioconazole	C178928706	1	5
+Benzethonium chloride	C121540	4	9
+SB236057A	C180084019	14	7
+Spiroxamine	C118134308	8	12
+Dinocap	C39300453	3	21
+2-Nitro-1,4-phenylenediamine	C5307142	1	1
+Tripropylene glycol diacrylate	C42978665	1	4
+CJ-013610	C249296433	8	23
+HMR1171	C328392467	19	4
+6-Thioguanine	C154427	1	4
+Dodecyltrimethylammonium chloride	C112005	17	8
+Amitraz	C33089611	2	4
+Elzasonan	C361343193	6	6
+Trimethylolpropane trimethacrylate	C3290924	2	7
+Tributyltin methacrylate	C2155706	29	18
+Malathion	C121755	2	5
 Docusate sodium	C577117	24	4
-Zamifenacin	C127308821	22	13
-Diuron	C330541	1	17
-2-Chloroacetophenone	C532274	1	18
-PharmaGSID_48513	C825643570	12	2
-1,5-Naphthalenediamine	C2243621	1	9
-Sodium dodecyl sulfate	C151213	19	10
-CP-728663	C368832422	10	27
-Tebufenozide	C112410238	2	7
-Tebupirimfos	C96182535	1	17
-SAR377142	CNOCAS47385	3	23
-Theobromine	C83670	1	1
-2,4-Dinitrophenol	C51285	1	1
-Clomiphene citrate (1:1)	C50419	27	8
-SB243213A	C200940234	2	3
-Dodecylbenzene sulfonate triethanolamine(1:1)	C27323417	24	5
-1,1-Methylenebis(4-isocyanatocyclohexane)	C5124301	2	20
-Ametryn	C834128	3	1
-all-trans-Retinoic acid	C302794	1	17
-C.I. Disperse Blue 27	C15791783	2	9
-Chlorfenvinphos	C470906	2	8
-CP-100829	C135080034	7	8
-2-Aminoanthraquinone	C117793	3	1
-Benomyl	C17804352	1	3
-Tetramethylthiuram monosulfide	C97745	3	4
-1,4-Benzoquinone	C106514	3	6
-SSR 240612	C464930425	15	26
-Paclobutrazol	C76738620	1	14
-Volinanserin	C139290656	13	17
-Spirodiclofen	C148477718	1	6
-Chloranil	C118752	5	18
-Oxytetracycline	C79572	6	5
-Tri-o-cresyl phosphate	C78308	2	14
-Perfluorooctanesulfonic acid	C1763231	23	8
-4,4'-Methylenebis(N,N-dimethylaniline)	C101611	1	19
-Benzo(f)quinoline	C85029	1	11
-Metolachlor	C51218452	1	9
-Triphenyltin hydroxide	C76879	12	6
-4,4',4''-Ethane-1,1,1-triyltriphenol	C27955948	1	27
-SSR69071	C344930956	11	28
-Ro 23-7637	C107071669	1	32
-Butachlor	C23184669	1	3
-9-Phenanthrol	C484173	4	4
-Bis(2-ethylhexyl)hexanedioate	C103231	1	1
-Tris(1,3-dichloro-2-propyl) phosphate	C13674878	4	32
-Celecoxib	C169590425	1	4
-Ethion	C563122	2	3
-SAR 150640	C433212216	21	26
-d-Carvone	C2244168	2	1
-Dinobuton	C973217	2	32
-Norflurazon	C27314132	1	12
-Decanoic acid	C334485	1	2
-Ingliforib	C186392654	3	13
-Sodium dodecylbenzenesulfonate	C25155300	29	3
-4-(1,1,3,3-Tetramethylbutyl)phenol	C140669	8	6
-Captan	C133062	7	3
-17alpha-Estradiol	C57910	1	9
-Sodium dimethyldithiocarbamate	C128041	3	6
-Chlorpyrifos-methyl	C5598130	3	8
-Tebuconazole	C107534963	1	11
-17alpha-Hydroxyprogesterone	C68962	1	2
-Diisopropyl methylphosphonate	C1445756	2	1
-Bisphenol B	C77407	6	23
-Tamoxifen	C10540291	5	3
-Imidacloprid	C138261413	1	1
-CP-612372	C353280076	1	4
-Haloperidol	C52868	17	29
-Diethylene glycol dibenzoate	C120558	3	1
-Ethyl cinnamate	C103366	1	1
-Napropamide	C15299997	3	13
-Myclobutanil	C88671890	5	2
-3,3'-Diaminobenzidine	C91952	1	3
-2-(Thiocyanomethylthio)benzothiazole	C21564170	6	25
-Prometryn	C7287196	3	3
-UK-156819	C162706141	2	1
-Chloridazon	C1698608	2	1
-Terbutryn	C886500	2	8
-Methidathion	C950378	1	6
-4-Cumylphenol	C599644	6	21
-Azoxystrobin	C131860338	4	5
-1,3-Bis(2-isocyanato-2-propyl)benzene	C2778429	2	1
-4'-(Chloroacetyl)acetanilide	C140498	3	23
-Indole-3-carbinol	C700061	2	12
-Perfluoroundecanoic acid	C2058948	8	30
-Chlorhexidine dihydrochloride	C3697425	4	14
-Aspirin	C50782	2	11
-Pentaerythritol triacrylate	C3524683	1	34
-Azinphos-ethyl	C2642719	1	10
-4-Hydroxy-3-methoxybenzaldehyde	C121335	1	2
-2,2',4,4'-Tetrahydroxybenzophenone	C131555	13	6
-Chlordane	C57749	1	14
-2-Amino-5-nitrophenol	C121880	1	4
-Ammonium perfluorooctanoate	C3825261	1	1
-Bromacil	C314409	3	1
+Difenzoquat metilsulfate	C43222486	7	1
+1,2-Phenylenediamine	C95545	2	8
+4,5-Dichloro-3H-1,2-dithiol-3-one	C1192525	3	13
+Bismaleimide	C13676545	2	17
+Caffeine	C58082	2	5
 Imazethapyr	C81335775	1	2
-Octrizole	C3147759	1	7
-CI-959	C104795688	1	15
-Emamectin benzoate	C155569918	23	2
-2,4-Dichlorophenol	C120832	1	2
-Flusilazole	C85509199	4	16
-Trimethylolpropane trimethacrylate	C3290924	2	8
-SR271425	C155990208	16	24
-Dinocap	C39300453	3	33
-1,3,5-Benzenetricarbonyl trichloride	C4422951	1	10
-Astemizole	C68844779	3	4
-Tetramethrin	C7696120	1	17
-Genistein	C446720	3	11
-1,2-Phenylenediamine	C95545	2	16
-CP-607366	C289716945	4	5
-Malathion	C121755	2	20
-Milbemectin (mixture of 70% Milbemcin A4, 30% Milbemycin A3)	CNOCAS34742	18	4
-Potassium perfluorooctanesulfonate	C2795393	7	10
-Anilazine	C101053	2	10
-4-Methylaniline	C106490	1	1
-2-Methyl-2,4-pentanediol	C107415	1	10
-Diallyl phthalate	C131179	2	3
-2',3'-Dideoxyinosine	C69655056	1	1
-Butylparaben	C94268	1	10
-4-Chlorotoluene	C106434	1	1
-4-Chloro-1,2-diaminobenzene	C95830	2	18
+Indole-3-carbinol	C700061	2	7
+Sodium dodecyl sulfate	C151213	19	8
+CI-1029	C207736058	3	3
+(9E,12Z)-9,12-Tetradecadien-1-ol acetate	C31654770	1	3
+PharmaGSID_48172	CNOCAS48172	13	3
+Diethylstilbestrol	C56531	12	10
+Xanthone	C90471	1	1
+SSR 241586 HCl	CNOCAS47353	23	5
+4-tert-Butylcatechol	C98293	4	5
+Clorophene	C120321	18	1
+Tamoxifen	C10540291	5	1
+N,N-Dimethyloctylamine	C7378996	2	2
+Chlorhexidine dihydrochloride	C3697425	4	10
+Binapacryl	C485314	1	19
+Kepone	C143500	5	6
+Flusilazole	C85509199	4	8
+Tebufenozide	C112410238	2	4
+Ethion	C563122	1	1
+Tributyltin chloride	C1461229	26	22
+Milbemectin (mixture of 70% Milbemcin A4, 30% Milbemycin A3)	CNOCAS34742	18	2
+SSR126768	CNOCAS47379	11	17
+Prallethrin	C23031369	2	16
+4-Aminofolic acid	C54626	6	1
+5-Amino-2-methylphenol	C2835952	2	1
+1,3-Dichloro-6,7,8,9,10,12-hexahydroazepino[2,1-b]quinazoline hydrochloride (1:1)	C149062759	10	4
+4,4',4''-Ethane-1,1,1-triyltriphenol	C27955948	1	25
+Profenofos	C41198087	1	8
+N-Ethylperfluorooctanesulfonamide	C4151502	1	4
+YM218	CNOCAS48176	9	21
+2,4-Dichlorophenoxybutyric acid	C94826	1	2
+EPN	C2104645	1	1
+Chlordane	C57749	1	13
+Dimethomorph	C110488705	1	9
+Mizolastine	C108612459	2	6
+Surinabant	C288104790	7	12
+Cyclanilide	C113136779	5	2
+Rotenone	C83794	1	16
+Reserpine	C50555	3	11
+Malachite green	C569642	5	26
+2-Amino-5-nitrophenol	C121880	1	1
+1,2-Dibromo-2,4-dicyanobutane	C35691657	4	16
+Acetamiprid	C135410207	1	1
+AVE3295	C478263988	2	3
+4,4'-Sulfonylbis[2-(prop-2-en-1-yl)phenol]	C41481667	17	13
+Mancozeb	C8018017	21	16
+1,1-Methylenebis(4-isocyanatocyclohexane)	C5124301	2	2
+Ethoxyquin	C91532	2	2
+Tetradifon	C116290	1	7
+Esfenvalerate	C66230044	2	1
+CP-122721	C145742285	12	7
+Zinc pyrithione	C13463417	2	5
+FR167356	C174185161	1	8
+PharmaGSID_48507	CNOCAS48507	3	2
+Isopentyl butyrate	C106274	1	3
+Perfluorooctanesulfonic acid	C1763231	23	3
+Ro 23-7637	C107071669	1	23
+3,5,3'-Triiodothyronine	C6893023	3	1
+PharmaGSID_48511	C1062243519	18	26
+Didecyldimethylammonium chloride	C7173515	30	15
+SR58611	C929601092	19	5
+3-Hydroxyfluorene	C6344678	2	10
+Formetanate hydrochloride	C23422539	1	4
+CP-465394	CNOCAS47255	1	1
+Temephos	C3383968	2	5
+Resmethrin	C10453868	6	9
+1,4-Benzenediamine dihydrochloride	C624180	2	7
+all-trans-Retinoic acid	C302794	1	10
+Decane	C124185	2	3
+GW473178E methyl benzene sulphonic acid	C263553339	6	2
+Grinstad Soft-N-Safe	CNOCAS47394	1	5
+Terbutryn	C886500	2	1
+AVE5638	C725228455	22	20
+Octyl gallate	C1034011	12	4
+Spirodiclofen	C148477718	1	3
+AVE8488	CNOCAS47349	11	11
+Anilazine	C101053	2	5
+CP-283097	C171866312	4	4
+Flutolanil	C66332965	1	8
+Clomazone	C81777891	1	4
+5HPP-33	C105624860	1	1
+4-Nonylphenol, branched	C84852153	3	20
+Metiram	C9006422	13	1
+Prochloraz	C67747095	5	10
+Octhilinone	C26530201	11	27
+beta-Nitrostyrene	C102965	1	29
+17beta-Trenbolone	C10161338	1	11
+4-Anilinophenol	C122372	1	1
+Diuron	C330541	1	5
+1,4-Benzoquinone	C106514	3	1
+N,N-Dimethyldodecan-1-amine	C112185	1	15
+Phosalone	C2310170	1	14
+Isopropyl triethanolamine titanate	C36673162	6	1
+Prometryn	C7287196	3	2
+PK 11195	C85532758	6	6
+N-Phenyl-1,4-benzenediamine	C101542	10	1
+Perfluorononanoic acid	C375951	5	7
+Zamifenacin	C127308821	22	6
+PharmaGSID_48505	CNOCAS48505	7	13
+1,2,5,6,9,10-Hexabromocyclododecane	C3194556	1	5
+Indeno(1,2,3-cd)pyrene	C193395	1	1
+Farglitazar	C196808454	8	12
+UK-416244	C402910274	13	9
+Benzylhexadecyldimethylammonium chloride	C122189	6	13
+Napropamide	C15299997	3	10
+Myclobutanil	C88671890	5	2
+Propanil	C709988	2	4
+PHA-00568487	C527680564	1	1
+Tamoxifen citrate	C54965241	12	1
+CP-544439	C230954093	2	2
+Hydramethylnon	C67485294	5	27
+4-(Diethylamino)benzaldehyde	C120218	1	3
+Alachlor	C15972608	1	8
+1,2-Benzisothiazolin-3-one	C2634335	7	12
+1-Naphthylamine	C134327	2	2
+2,3-Diaminotoluene	C2687254	4	1
+AVE6324	CNOCAS47377	28	7
 Bisphenol AF	C1478611	20	20
-Azamethiphos	C35575963	1	12
-Phenylephrine hydrochloride	C61767	1	1
-Folpet	C133073	3	4
-PK 11195	C85532758	6	17
-Amiodarone hydrochloride	C19774824	25	24
-Sulfotepp	C3689245	1	2
-SSR504734	C742693385	9	30
-PharmaGSID_47330	CNOCAS47330	1	17
-Prometon	C1610180	2	5
-Difenoconazole	C119446683	2	15
-17alpha-Ethinylestradiol	C57636	2	27
-5-Nitroacenaphthene	C602879	1	3
-GSK163929B	CNOCAS47311	10	11
-1,3-Diphenylguanidine	C102067	6	16
-Chlorothalonil	C1897456	2	6
-Triflusulfuron-methyl	C126535157	2	1
-SSR150106	CNOCAS47362	20	32
-1,2-Benzisothiazolin-3-one	C2634335	7	20
-2-Amino-5-nitrothiazole	C121664	3	1
-Thiabendazole	C148798	3	5
-N-Ethylperfluorooctanesulfonamide	C4151502	1	23
-Quinoxyfen	C124495187	1	7
-N,N-Dimethyldodecan-1-amine	C112185	1	28
-Isopropyl triethanolamine titanate	C36673162	6	3
-Tiratricol	C51241	2	16
-2-tert-Butyl-4-methoxyphenol	C121006	3	20
-4-Heptylphenol	C1987504	1	3
-Perfluorooctanoic acid	C335671	3	4
-beta-Nitrostyrene	C102965	1	34
-Naled	C300765	5	2
-Isazofos	C42509808	2	2
-SR58611	C929601092	19	10
-Indoxacarb	C173584446	1	15
-Fluroxypyr-meptyl	C81406373	1	2
-Diphenyl phthalate	C84628	1	8
-Enadoline	C124378774	1	4
-Dimethomorph	C110488705	1	13
-Cladribine	C4291638	3	2
-tert-Butylhydroquinone	C1948330	2	23
-Prednisone	C53032	2	1
-Imazalil	C35554440	10	21
-Bisphenol A	C80057	10	21
-Fenitrothion	C122145	1	15
-Nelivaptan	C439687691	1	31
-PharmaGSID_48507	CNOCAS48507	3	10
-Abamectin	C71751412	10	2
-Ethoxyquin	C91532	2	31
-3,5,6-Trichloro-2-pyridinol	C6515384	1	3
-UK-337312	C203942498	8	2
-Besonprodil	C253450098	9	23
-FD&C Blue No. 1	C3844459	4	3
-Sodium L-ascorbate	C134032	1	1
-Sodium hexyldecyl sulfate	C1120010	14	14
-PD-0333941	C501027492	2	6
-Triadimefon	C43121433	4	10
-1,3-Dichloro-6,7,8,9,10,12-hexahydroazepino[2,1-b]quinazoline hydrochloride (1:1)	C149062759	10	12
-Trelanserin	C189003927	13	9
-Flutolanil	C66332965	1	9
-Surinabant	C288104790	7	16
-Diethyl butanedioate	C123251	3	2
-Allura Red C.I.16035	C25956176	11	1
-PharmaGSID_47333	CNOCAS47333	3	7
-PharmaGSID_48511	C1062243519	18	30
-SR144190	C181640095	7	19
-Raloxifene hydrochloride	C82640048	28	22
-Metam-sodium hydrate	C6734801	1	16
-1-Hexadecanol	C36653824	1	4
-Benz(a)anthracene	C56553	1	4
-Methylene bis(thiocyanate)	C6317186	2	2
-Methoxyfenozide	C161050584	1	9
-2-Nitro-1,4-phenylenediamine	C5307142	1	3
-Bensulide	C741582	2	5
-AVE6324	CNOCAS47377	28	12
-Pentamidine isethionate	C140647	17	22
+Fenpropathrin	C39515418	2	1
+4-Hexylresorcinol	C136776	4	13
+SR146131 trifluoroacetate (1:1)	C221671621	2	28
+Propylparaben	C94133	1	1
+Astemizole	C68844779	3	1
+Triethylene glycol bis(3-tert-butyl-4-hydroxy-5-methylphenyl)propionate	C36443682	2	3
+Methoxychlor	C72435	2	1
+CP-728663	C368832422	10	2
 Triflumizole	C68694111	2	7
-Difpas-pyrazole	C151506444	1	3
-3,3'-Dimethylbisphenol A	C79970	1	29
-AVE8923	CNOCAS47381	24	6
-PharmaGSID_48172	CNOCAS48172	14	9
-Sodium (2-pyridylthio)-N-oxide	C3811732	2	7
-Pyrithiobac-sodium	C123343168	1	4
+Metam-sodium hydrate	C6734801	1	5
+MK-968	CNOCAS47334	1	9
+Butachlor	C23184669	1	3
+4-(2-Methylbutan-2-yl)phenol	C80466	2	10
+Diphenhydramine hydrochloride	C147240	14	1
+Besonprodil	C253450098	9	8
+Haloperidol	C52868	17	19
+Octrizole	C3147759	1	2
+Quinoxyfen	C124495187	1	7
+Rifampicin	C13292461	2	1
+Genistein	C446720	2	7
+Cyclopamine	C4449518	1	14
+Diiodomethyl 4-methylphenyl sulfone	C20018091	2	32
+Tiratricol	C51241	2	2
+1,3-Diphenylguanidine	C102067	6	10
+Chlorhexidine diacetate	C56951	5	26
+Tralopyril	C122454299	2	12
+Nelivaptan	C439687691	1	9
+Phenylmercuric acetate	C62384	32	16
+Pyraclostrobin	C175013180	3	11
+Bis(trichloromethyl)sulfone	C3064708	2	21
+SR125047	CNOCAS47342	21	8
+Bisphenol A	C80057	10	11
+PharmaGSID_48519	C686756876	3	15
+3,3,4,4-Tetrachlorotetrahydrothiophene 1,1-dioxide	C3737415	2	11
+Ametryn	C834128	3	1
+Sodium myristyl sulfate	C1191500	25	1
+3,3'-Dimethoxybenzidine dihydrochloride	C20325400	2	11
+Ethanolamine	C141435	1	1
+Chlorobenzilate	C510156	1	1
+Fenarimol	C60168889	3	11
+Benz(a)anthracene	C56553	1	3
+PharmaGSID_48509	CNOCAS48509	9	1
+Retinol palmitate	C79812	2	2
+Isazofos	C42509808	1	1
+Imazalil	C35554440	10	18
+2,3-Dibromopropyl acrylate	C19660163	1	8
+Bromoxynil	C1689845	1	9
+Benzo(b)fluoranthene	C205992	1	4
+2,2',4,4'-Tetrahydroxybenzophenone	C131555	12	1
+7-Diethylamino-4-methylcoumarin	C91441	2	1
+CP-100829	C135080034	6	6
+SSR150106	CNOCAS47362	20	21
+Methyl linoleate	C112630	3	5
+2-(Morpholin-4-yldithio)-1,3-benzothiazole	C95329	2	4
+Glycerol	C56815	1	3
+Rosiglitazone maleate	C155141290	2	2
+1,5-Naphthalenediamine	C2243621	1	5
+Bensulide	C741582	1	2
+CI-959	C104795688	1	3
+PharmaGSID_47337	C1061517621	11	14
+Azinphos-ethyl	C2642719	1	3
+2,4-Dihydroxybenzophenone	C131566	2	3
+SR271425	C155990208	16	19
+Parathion	C56382	2	4
+Hexaconazole	C79983714	5	12
+Benzo(f)quinoline	C85029	1	1
+Fenhexamid	C126833178	1	11
+Bisphenol B	C77407	6	20
+Cyproterone acetate	C427510	1	6
+Hexachlorophene	C70304	3	17
+(7S)-Hydroprene	C65733188	1	6
+Fludioxonil	C131341861	1	17
+Mercuric chloride	C7487947	27	4
+3,3'-Dimethoxybenzidine	C119904	1	5
+S-Bioallethrin	C28434006	1	7
+N-Cyclohexyl-2-benzothiazolesulfenamide	C95330	3	1
+Cladribine	C4291638	3	1
+Captan	C133062	7	1
+2-(Thiocyanomethylthio)benzothiazole	C21564170	5	21
+N,N,N-Trimethyloctadecan-1-aminium chloride	C112038	4	28
+Resveratrol	C501360	7	6
+SR144190	C181640095	7	1
+3,3'-Dichlorobenzidine dihydrochloride	C612839	2	7
+Diquat dibromide D4	CNOCAS44337	2	7
+Thiram	C137268	7	1
+Azoxystrobin	C131860338	4	4
+2,4,6-Triiodophenol	C609234	1	8
+Chlorpyrifos oxon	C5598152	2	8
+AVE8923	CNOCAS47381	24	4
+Disulfiram	C97778	7	4
+Ethylhexadecyldimethylammonium bromide	C124038	6	18
+Isoxaben	C82558507	1	8
+9-Phenanthrol	C484173	3	1
+Triphenyltin hydroxide	C76879	11	4
+Tetraconazole	C112281773	5	9
+Raloxifene hydrochloride	C82640048	28	18
+N-Hydroxybenzamide	C495181	1	10
+Folpet	C133073	3	2
+Methidathion	C950378	1	2
+Paclobutrazol	C76738620	1	10
+PharmaGSID_47263	C349495427	5	1
+Lactofen	C77501634	1	4
+1-Amino-2-methylanthraquinone	C82280	3	1
+Tetrabromobisphenol A bis(2-hydroxyethyl) ether	C4162452	1	24
+Chlorpromazine hydrochloride	C69090	23	14
+PharmaGSID_48166	CNOCAS48166	1	27
+Trixylyl phosphate	C25155231	2	7
+Tetrac	C67301	4	29
+MK-578	C313994795	2	4
+Hydroquinone	C123319	2	4
+PD 0343701	C676116044	1	11
+4-Chloro-1,2-diaminobenzene	C95830	2	14
+Trelanserin	C189003927	13	5
+8-Hydroxyquinoline	C148243	1	4
+SSR69071	C344930956	11	23
+2,4-Di-tert-butylphenol	C96764	1	2
+Pentamidine isethionate	C140647	17	8
+Permethrin	C52645531	2	2
+Etoxazole	C153233911	1	5
+Gentian Violet	C548629	29	21
+Sodium hexyldecyl sulfate	C1120010	14	12
+Cyprodinil	C121552612	8	12
+Potassium perfluorooctanesulfonate	C2795393	7	6
+Forchlorfenuron	C68157608	6	10
+Quercetin	C117395	1	1
+CP-612372	C353280076	1	1
+Pyrithiobac-sodium	C123343168	1	1
+Metolachlor	C51218452	1	6
+Chloranil	C118752	4	8
+Cyazofamid	C120116883	2	15
+Chlorpyrifos-methyl	C5598130	2	4
+17alpha-Ethinylestradiol	C57636	2	18
+4-Hydroxytamoxifen	C68392358	10	8
+4-Aminoazobenzene	C60093	1	6
+Oxytetracycline dihydrate	C6153646	9	3
+N,N-Dimethyl-N-benzyl-N-octadecylammonium chloride	C122190	5	17
+Flutamide	C13311847	2	4
+SSR 240612	C464930425	15	21
+2,3,4,6-Tetrachlorophenol	C58902	1	2
+Resorcinol	C108463	1	5
+Methadone hydrochloride	C1095905	13	4
+Fenoxaprop-ethyl	C66441234	1	1
+Pyrimethamine	C58140	6	6
+Propargite	C2312358	3	12
+UK-343664	C215297271	1	3
+Propyl gallate	C121799	2	7
+Octylbicycloheptenedicarboximide	C113484	1	6
+4,5-Dichloro-2-octyl-3(2H)-isothiazolone	C64359815	2	19
+Celecoxib	C169590425	1	2
+Simvastatin	C79902639	2	1
+GSK163929B	CNOCAS47311	10	7
+Tetradonium bromide	C1119977	4	14
+tert-Butylphenyl diphenyl phosphate	C56803373	1	2
+Triadimefon	C43121433	4	5
+CI-1018	CNOCAS47248	1	6
+CJ-013790	C179465715	8	12
+SSR504734	C742693385	9	21
+4-Hydroxy-3-methoxybenzaldehyde	C121335	1	1
+meso-Hexestrol	C84162	6	10
+Pentaerythritol triacrylate	C3524683	1	19
+2,5-Dimethylphenol	C95874	1	1
+2-Amino-5-azotoluene	C97563	1	9
+C.I. Solvent Yellow 14	C842079	1	4
+Bronopol	C52517	3	1
+Perfluorooctanoic acid	C335671	3	2
+Phenolphthalein	C77098	4	17
+Chlorothalonil	C1897456	2	3
+Triphenyl phosphates isopropylated	C68937417	2	3
+17alpha-Estradiol	C57910	1	8
+Lovastatin	C75330755	1	5
+Bromadiolone	C28772567	5	25
+Testosterone propionate	C57852	2	1
+Mifepristone	C84371653	3	19
+PharmaGSID_47315	C444610917	14	22
+Pyrimethanil	C53112280	4	6
+4'-(Chloroacetyl)acetanilide	C140498	2	18
+Fenpyroximate (Z,E)	C111812589	1	14
+SAR377142	CNOCAS47385	3	2
+Tributyltetradecylphosphonium chloride	C81741288	10	13
+Indoxacarb	C173584446	1	10
+CP-105696	C158081993	1	5
+Musk ketone	C81141	1	1
+Triphenyltin chloride	C639587	4	26
+Fenoxycarb	C72490018	1	8
+Tannic acid	C1401554	2	2
+Prometon	C1610180	2	3
+Spironolactone	C52017	1	8
+Perfluorodecanoic acid	C335762	10	16
+Fandosentan potassium salt	C221246124	6	2
+Sodium dimethyldithiocarbamate	C128041	3	3
+tert-Butylhydroquinone	C1948330	2	2
+2-Methyl-2,4-pentanediol	C107415	1	10
+SSR 103800	C1075752907	7	3
+Dinobuton	C973217	2	17
+3,3'-Dimethylbisphenol A	C79970	1	17
+C.I. Solvent Red 49	C509342	1	7
+SAR 150640	C433212216	21	18
+Fluazinam	C79622596	1	22
+Perfluoroundecanoic acid	C2058948	8	17
+Fabesetron hydrochloride	C129299907	17	16
+CP-607366	C289716945	4	3
+Dodecylbenzene sulfonate triethanolamine(1:1)	C27323417	24	3
+Clomiphene citrate (1:1)	C50419	27	6
+Methoxyfenozide	C161050584	1	7
+Triclosan	C3380345	6	16
+Cypermethrin	C52315078	3	1
+1,3-Dichlorobenzene	C541731	1	1
+D&C Red 27	C13473262	4	5
+17alpha-Hydroxyprogesterone	C68962	1	1
+C.I. Disperse Red 60	C17418585	1	1
+Bromacil	C314409	2	1
+delta-Hexachlorocyclohexane	C319868	1	9
+Azinphos-methyl	C86500	3	12
+2-Aminoanthraquinone	C117793	3	1
+Icaridin	C119515387	2	2
+Sodium (2-pyridylthio)-N-oxide	C3811732	2	2
+Theophylline	C58559	2	2
+2,2'-Dibenzoylaminodiphenyl disulfide	C135579	2	2
+Tetramethylthiuram monosulfide	C97745	3	1
+FD&C Red 3	C16423680	5	4
+3-Amino-9-ethylcarbazole	C132321	2	1
+Tolclofos-methyl	C57018049	1	1
+Dicyclohexylcarbodiimide	C538750	2	8
+SAR102779	CNOCAS47387	14	16
+CI-1044	CNOCAS47291	1	1
+Retinol	C68268	1	5
+Clotrimazole	C23593751	1	19
+Danazol	C17230885	1	22
+Sodium pentachlorophenate	C131522	2	9
+PharmaGSID_47330	CNOCAS47330	1	10
+4-Cumylphenol	C599644	6	18
+Difenoconazole	C119446683	2	13
+Tris(1,3-dichloro-2-propyl) phosphate	C13674878	4	5
+Tebuconazole	C107534963	1	1
+C.I. Disperse Blue 27	C15791783	2	4
+SSR146977	C264618442	12	20
+Chlorfenvinphos	C470906	2	6
+D&C Blue No. 9	C130201	1	1
+PD-0333941	C501027492	2	3
