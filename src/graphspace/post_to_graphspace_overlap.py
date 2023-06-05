@@ -32,8 +32,6 @@ except ImportError:
 
 ## GraphSpace variables
 #GROUP_OWNER = 'jeffl@vt.edu'
-USERNAME = 'jeffl@vt.edu'
-PASSWORD = 'XXX'
 
 #GROUP='ToxCast'
 GROUP = ''
@@ -364,8 +362,8 @@ def main(args):
     #G = nx.relabel_nodes(G, mapNodes(G.nodes(), from_namespace='uniprotkb', to_namespace='genename'))
 
     # post to graphspace
-    gs = GraphSpace(USERNAME,PASSWORD)
-    gs_graph = gs.get_graph(opts.graph_name, owner_email=USERNAME)
+    gs = GraphSpace(opts.username, opts.password)
+    gs_graph = gs.get_graph(opts.graph_name, owner_email=opts.username)
 #    if gs_graph is None:
     if opts.apply_layout is None:
         print("\nPosting graph '%s' to graphspace\n" % (opts.graph_name))
@@ -1031,6 +1029,10 @@ def parseArgs(args):
                       help='List of human receptors and tfs. Useful to add shape (triangle or square) to intermediate nodes. Default=\'/data/jeff-law/projects/2016-02-toxcast/inputs/pathlinker-data/human-rec-tfs.txt\'')
 
     # posting options
+    parser.add_option('-U', '--username', type='string', metavar='STR', 
+                      help='GraphSpace account username to post graph to. Required')
+    parser.add_option('-P', '--password', type='string', metavar='STR', 
+                      help='Username\'s GraphSpace account password. Required')
     parser.add_option('', '--graph-name', type='string', metavar='STR', default='test',
                       help='Graph name for posting to GraphSpace. Default = "test".')
     parser.add_option('', '--outprefix', type='string', metavar='STR', default='test',
