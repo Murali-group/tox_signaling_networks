@@ -177,9 +177,9 @@ def write_revigo_color_files(chemicals, RESULTSPREFIX, **kwargs):
                 print("ERROR: --term-counts-file '%s' not found." % (kwargs['term_counts_file']))
                 sys.exit()
             print("reading %s" % (kwargs['term_counts_file']))
-            df_r = pd.read_csv(kwargs['term_counts_file'], sep='\t', names=['term_name', 'count'])
+            df_r = pd.read_csv(kwargs['term_counts_file'], sep='\t', names=['term_name', 'term_id', 'count'])
             print(df_r.head())
-            freq_cutoff = kwargs.get('freq_cutoff', .75)
+            freq_cutoff = kwargs.get('freq_cutoff', .69)
             print("applying a frequency cutoff of %s" % (freq_cutoff))
             df_r['freq'] = df_r['count'] / df_r['count'].max() 
             term_freq = dict(zip(df_r['term_name'], df_r['freq']))
@@ -190,6 +190,10 @@ def write_revigo_color_files(chemicals, RESULTSPREFIX, **kwargs):
             selected_terms = []
             for name in df['name']:
                 if term_freq[name] < freq_cutoff:
+                    selected_terms.append(name_to_term[name])
+            # append the common terms to the end
+            for name in df['name']:
+                if term_freq[name] >= freq_cutoff:
                     selected_terms.append(name_to_term[name])
 
         term_popups = {}
